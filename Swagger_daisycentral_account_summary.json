@@ -5,7 +5,7 @@
 		"description": "API for DC",
 		"version": "0.0.0"
 	},
-	"host": "localhost:17000",
+	"host": "localhost:17103",
 	"basePath": "/cgi-bin/index.cgi/ExternalServices/v1",
 	"schemes": ["http"],
 	"paths": {
