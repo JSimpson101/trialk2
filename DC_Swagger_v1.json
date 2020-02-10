@@ -2,10 +2,10 @@
 	"swagger": "2.0",
 	"info": {
 		"title": "Daisy",
-		"description": "API for daisycentral.daisy.group",
+		"description": "API for 10.4.11.173",
 		"version": "0.0.0"
 	},
-	"host": "daisycentral.daisy.group",
+	"host": "localhost:17000",
 	"basePath": "/cgi-bin/index.cgi/ExternalServices/v1",
 	"schemes": ["http"],
 	"paths": {
