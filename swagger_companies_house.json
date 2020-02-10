@@ -68,11 +68,11 @@
 			"properties": {
 				"address_line_1": {
 					"type": "string",
-					"x-example": "Test Hall"
+					"x-example": "Severalls Hall"
 				},
 				"address_line_2": {
 					"type": "string",
-					"x-example": "Test Lane"
+					"x-example": "Severalls Lane"
 				},
 				"country": {
 					"type": "string",
@@ -80,7 +80,7 @@
 				},
 				"etag": {
 					"type": "string",
-					"x-example": "285c09sds32f2fc98asdsdsdssds26479a875ds0b3a"
+					"x-example": "285c095832f2fc98a36681f52d26479a875f0b3a"
 				},
 				"kind": {
 					"type": "string",
@@ -88,7 +88,7 @@
 				},
 				"links": {
 					"$ref": "#/definitions/Links",
-					"x-example": "{\n  \"self\": \"/company/01232145/registered-office-address\"\n}"
+					"x-example": "{\n  \"self\": \"/company/01509592/registered-office-address\"\n}"
 				},
 				"locality": {
 					"type": "string",
@@ -96,7 +96,7 @@
 				},
 				"postal_code": {
 					"type": "string",
-					"x-example": "P0ST 1PA"
+					"x-example": "CO4 5JS"
 				},
 				"region": {
 					"type": "string",
@@ -110,7 +110,7 @@
 			"description": "Default Authentication",
 			"type": "apiKey",
 			"name": "api_key",
-			"in": "header"
+			"in": "query"
 		}
 	},
 	"security": [],
