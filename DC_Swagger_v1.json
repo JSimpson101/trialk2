@@ -1,0 +1,301 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Daisy",
+		"description": "API for daisycentral.daisy.group",
+		"version": "0.0.0"
+	},
+	"host": "daisycentral.daisy.group",
+	"basePath": "/cgi-bin/index.cgi/ExternalServices/v1",
+	"schemes": ["http"],
+	"paths": {
+		"/Account/Summary": {
+			"get": {
+				"tags": ["Account"],
+				"description": "Summary",
+				"operationId": "Summary",
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "account",
+					"in": "query",
+					"description": "account",
+					"required": true,
+					"type": "string",
+					"x-example": "QIK32606"
+				}],
+				"responses": {
+					"200": {
+						"description": "Account summary information",
+						"schema": {
+							"$ref": "#/definitions/Summary"
+						},
+						"examples": {
+							"application/json": {
+								"data": {
+									"summary": {
+										"customer_type": null,
+										"lead_engineer_name": "",
+										"customer_support_executive_name": "SME Customer Services Team 2",
+										"city": "Test Place",
+										"dbam_email": null,
+										"contact_phone_number": "0118999661",
+										"division": "Retail",
+										"msa": null,
+										"daisy_central_id": "QIK32606",
+										"contact_name": "Jane Doe",
+										"dbam_name": "Employee Account",
+										"fam_employee_number": "Generic",
+										"customer_support_executive_email": null,
+										"unconfirmed_account_structure": 0,
+										"software_version": "Sage 200",
+										"billing_email": "jane.doe@test.co.uk",
+										"account_name": "A Demo Account",
+										"customer_support_executive_employee_number": "Generic",
+										"updated_by_name": "website website",
+										"fam_name": "Employee Account",
+										"county": "London",
+										"client_support_team": null,
+										"lead_engineer_email": null,
+										"country": null,
+										"service_manager_employee_number": "0118232",
+										"postcode": "SW10 1BY",
+										"update_date": "2020-01-13 12:26:49",
+										"fam_email": null,
+										"address_line_2": "Test House",
+										"company_id": "UID00000",
+										"active": 1,
+										"company_group_id": "GC111111",
+										"updated_by_employee_number": null,
+										"service_manager_name": "",
+										"address_line_1": "Test Line 1",
+										"lead_engineer_employee_number": "10123213",
+										"parent_account_id": null,
+										"dbam_employee_number": "Generic",
+										"service_manager_email": null,
+										"updated_by_email": null,
+										"is_head_account": 1
+									}
+								},
+								"status": "success"
+							}
+						}
+					}
+				},
+				"security": [{
+					"DC Credentials": []
+				}]
+			}
+		}
+	},
+	"definitions": {
+		"Summary": {
+			"description": "Model for Summary",
+			"required": ["data"],
+			"properties": {
+				"data": {
+					"$ref": "#/definitions/Data",
+					"x-example": "{\n  \"summary\": {\n    \"customer_type\": null,\n    \"lead_engineer_name\": \"\",\n    \"customer_support_executive_name\": \"SME Customer Services Team 2\",\n    \"city\": \"Test Place\",\n    \"dbam_email\": null,\n    \"contact_phone_number\": \"01234205630\",\n    \"division\": \"Retail\",\n    \"msa\": null,\n    \"daisy_central_id\": \"QIK32606\",\n    \"contact_name\": \"Jane Doe\",\n    \"dbam_name\": \"Employee Account\",\n    \"fam_employee_number\": \"Generic\",\n    \"customer_support_executive_email\": null,\n    \"unconfirmed_account_structure\": 0,\n    \"software_version\": \"Sage 200\",\n    \"billing_email\": \"jane.doe@live.co.uk\",\n    \"account_name\": \"A Demo Account\",\n    \"customer_support_executive_employee_number\": \"Generic\",\n    \"updated_by_name\": \"website website\",\n    \"fam_name\": \"Employee Account\",\n    \"county\": \"Wigan\",\n    \"client_support_team\": null,\n    \"lead_engineer_email\": null,\n    \"country\": null,\n    \"service_manager_employee_number\": \"000012171\",\n    \"postcode\": \"WN2 4EY\",\n    \"update_date\": \"2020-01-13 12:26:49\",\n    \"fam_email\": null,\n    \"address_line_2\": \"Stratus House\",\n    \"company_id\": \"UID0000004\",\n    \"active\": 1,\n    \"company_group_id\": \"GCID000004\",\n    \"updated_by_employee_number\": null,\n    \"service_manager_name\": \"\",\n    \"address_line_1\": \"Test IT Ltd\",\n    \"lead_engineer_employee_number\": \"000012171\",\n    \"parent_account_id\": null,\n    \"dbam_employee_number\": \"Generic\",\n    \"service_manager_email\": null,\n    \"updated_by_email\": null,\n    \"is_head_account\": 1\n  }\n}"
+				},
+				"status": {
+					"type": "string",
+					"x-example": "success"
+				}
+			}
+		},
+		"Data": {
+			"description": "Model for Data",
+			"required": ["summary"],
+			"properties": {
+				"summary": {
+					"$ref": "#/definitions/Summary2",
+					"x-example": "{\n  \"customer_type\": null,\n  \"lead_engineer_name\": \"\",\n  \"customer_support_executive_name\": \"SME Customer Services Team 2\",\n  \"city\": \"Test Place\",\n  \"dbam_email\": null,\n  \"contact_phone_number\": \"01234205630\",\n  \"division\": \"Retail\",\n  \"msa\": null,\n  \"daisy_central_id\": \"QIK32606\",\n  \"contact_name\": \"Jane Doe\",\n  \"dbam_name\": \"Employee Account\",\n  \"fam_employee_number\": \"Generic\",\n  \"customer_support_executive_email\": null,\n  \"unconfirmed_account_structure\": 0,\n  \"software_version\": \"Sage 200\",\n  \"billing_email\": \"jane.doe@live.co.uk\",\n  \"account_name\": \"A Demo Account\",\n  \"customer_support_executive_employee_number\": \"Generic\",\n  \"updated_by_name\": \"website website\",\n  \"fam_name\": \"Employee Account\",\n  \"county\": \"Wigan\",\n  \"client_support_team\": null,\n  \"lead_engineer_email\": null,\n  \"country\": null,\n  \"service_manager_employee_number\": \"000012171\",\n  \"postcode\": \"WN2 4EY\",\n  \"update_date\": \"2020-01-13 12:26:49\",\n  \"fam_email\": null,\n  \"address_line_2\": \"Stratus House\",\n  \"company_id\": \"UID0000004\",\n  \"active\": 1,\n  \"company_group_id\": \"GCID000004\",\n  \"updated_by_employee_number\": null,\n  \"service_manager_name\": \"\",\n  \"address_line_1\": \"Test IT Ltd\",\n  \"lead_engineer_employee_number\": \"000012171\",\n  \"parent_account_id\": null,\n  \"dbam_employee_number\": \"Generic\",\n  \"service_manager_email\": null,\n  \"updated_by_email\": null,\n  \"is_head_account\": 1\n}"
+				}
+			}
+		},
+		"Summary2": {
+			"description": "Model for Summary2",
+			"required": ["account_name"],
+			"properties": {
+				"account_name": {
+					"type": "string",
+					"x-example": "A Demo Account"
+				},
+				"active": {
+					"type": "integer",
+					"format": "int32",
+					"x-example": "1"
+				},
+				"address_line_1": {
+					"type": "string",
+					"x-example": "Test IT Ltd"
+				},
+				"address_line_2": {
+					"type": "string",
+					"x-example": "Test House"
+				},
+				"billing_email": {
+					"type": "string",
+					"x-example": "jane.doe@live.co.uk"
+				},
+				"city": {
+					"type": "string",
+					"x-example": "Test Place"
+				},
+				"client_support_team": {
+					"type": "string",
+					"x-example": ""
+				},
+				"company_group_id": {
+					"type": "string",
+					"x-example": "GCID000004"
+				},
+				"company_id": {
+					"type": "string",
+					"x-example": "UID0000004"
+				},
+				"contact_name": {
+					"type": "string",
+					"x-example": "Jane Doe"
+				},
+				"contact_phone_number": {
+					"type": "string",
+					"x-example": "01234205630"
+				},
+				"country": {
+					"type": "string",
+					"x-example": ""
+				},
+				"county": {
+					"type": "string",
+					"x-example": "Wigan"
+				},
+				"customer_support_executive_email": {
+					"type": "string",
+					"x-example": ""
+				},
+				"customer_support_executive_employee_number": {
+					"type": "string",
+					"x-example": "Generic"
+				},
+				"customer_support_executive_name": {
+					"type": "string",
+					"x-example": "SME Customer Services Team 2"
+				},
+				"customer_type": {
+					"type": "string",
+					"x-example": ""
+				},
+				"daisy_central_id": {
+					"type": "string",
+					"x-example": "QIK32606"
+				},
+				"dbam_email": {
+					"type": "string",
+					"x-example": ""
+				},
+				"dbam_employee_number": {
+					"type": "string",
+					"x-example": "Generic"
+				},
+				"dbam_name": {
+					"type": "string",
+					"x-example": "Employee Account"
+				},
+				"division": {
+					"type": "string",
+					"x-example": "Retail"
+				},
+				"fam_email": {
+					"type": "string",
+					"x-example": ""
+				},
+				"fam_employee_number": {
+					"type": "string",
+					"x-example": "Generic"
+				},
+				"fam_name": {
+					"type": "string",
+					"x-example": "Employee Account"
+				},
+				"is_head_account": {
+					"type": "integer",
+					"format": "int32",
+					"x-example": "1"
+				},
+				"lead_engineer_email": {
+					"type": "string",
+					"x-example": ""
+				},
+				"lead_engineer_employee_number": {
+					"type": "string",
+					"x-example": "000012171"
+				},
+				"lead_engineer_name": {
+					"type": "string",
+					"x-example": ""
+				},
+				"msa": {
+					"type": "string",
+					"x-example": ""
+				},
+				"parent_account_id": {
+					"type": "string",
+					"x-example": ""
+				},
+				"postcode": {
+					"type": "string",
+					"x-example": "WN2 4EY"
+				},
+				"service_manager_email": {
+					"type": "string",
+					"x-example": ""
+				},
+				"service_manager_employee_number": {
+					"type": "string",
+					"x-example": "000012171"
+				},
+				"service_manager_name": {
+					"type": "string",
+					"x-example": ""
+				},
+				"software_version": {
+					"type": "string",
+					"x-example": "Sage 200"
+				},
+				"unconfirmed_account_structure": {
+					"type": "integer",
+					"format": "int32",
+					"x-example": "0"
+				},
+				"update_date": {
+					"type": "string",
+					"format": "date-time",
+					"x-example": "2020-01-13 12:26:49"
+				},
+				"updated_by_email": {
+					"type": "string",
+					"x-example": ""
+				},
+				"updated_by_employee_number": {
+					"type": "string",
+					"x-example": ""
+				},
+				"updated_by_name": {
+					"type": "string",
+					"x-example": "website website"
+				}
+			}
+		}
+	},
+	"securityDefinitions": {
+		"DC Credentials": {
+			"description": "Default Authentication for DC is your username/password",
+			"type": "basic"
+		}
+	},
+	"security": [],
+	"tags": [{
+		"name": "Account",
+		"description": "Operations about Account"
+	}]
+}
