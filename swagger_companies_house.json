@@ -1,0 +1,121 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "Companies House",
+		"description": "API for api.companieshouse.gov.uk",
+		"version": "0.0.0"
+	},
+	"host": "api.companieshouse.gov.uk",
+	"schemes": ["https"],
+	"paths": {
+		"/company/{company_number}/registered-office-address": {
+			"get": {
+				"tags": ["Company"],
+				"description": "get the Registered office address from company number",
+				"operationId": "getRegisteredOfficeAddress",
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "company_number",
+					"in": "path",
+					"description": "Company number",
+					"required": true,
+					"type": "string",
+					"x-example": "1010311"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Company"
+						},
+						"examples": {
+							"application/json": {
+								"etag": "1aerygelkgeregeejkbk32ejheh4",
+								"kind": "registered-office-address",
+								"links": {
+									"self": "/company/01111111/registered-office-address"
+								},
+								"address_line_1": "Testing House",
+								"address_line_2": "Testing Lane",
+								"country": "England",
+								"locality": "Colchester",
+								"region": "Essex",
+								"postal_code": "POST 1BY"
+							}
+						}
+					}
+				},
+				"security": [{
+					"Companies house API Key": []
+				}]
+			}
+		}
+	},
+	"definitions": {
+		"Links": {
+			"description": "Model for Links",
+			"required": ["self"],
+			"properties": {
+				"self": {
+					"type": "string",
+					"x-example": "/company/01509592/registered-office-address"
+				}
+			}
+		},
+		"Company": {
+			"description": "Model for Company",
+			"required": ["address_line_1"],
+			"properties": {
+				"address_line_1": {
+					"type": "string",
+					"x-example": "Test Hall"
+				},
+				"address_line_2": {
+					"type": "string",
+					"x-example": "Test Lane"
+				},
+				"country": {
+					"type": "string",
+					"x-example": "England"
+				},
+				"etag": {
+					"type": "string",
+					"x-example": "285c09sds32f2fc98asdsdsdssds26479a875ds0b3a"
+				},
+				"kind": {
+					"type": "string",
+					"x-example": "registered-office-address"
+				},
+				"links": {
+					"$ref": "#/definitions/Links",
+					"x-example": "{\n  \"self\": \"/company/01232145/registered-office-address\"\n}"
+				},
+				"locality": {
+					"type": "string",
+					"x-example": "Colchester"
+				},
+				"postal_code": {
+					"type": "string",
+					"x-example": "P0ST 1PA"
+				},
+				"region": {
+					"type": "string",
+					"x-example": "Essex"
+				}
+			}
+		}
+	},
+	"securityDefinitions": {
+		"Companies house API Key": {
+			"description": "Default Authentication",
+			"type": "apiKey",
+			"name": "api_key",
+			"in": "header"
+		}
+	},
+	"security": [],
+	"tags": [{
+		"name": "Company",
+		"description": "Operations about Company"
+	}]
+}
