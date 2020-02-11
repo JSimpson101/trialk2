@@ -11,8 +11,8 @@
 		"/company/{company_number}/registered-office-address": {
 			"get": {
 				"tags": ["Company"],
-				"description": "get the Registered office address from company number",
-				"operationId": "getRegisteredOfficeAddress",
+				"description": "Get registered office",
+				"operationId": "get_registered_office",
 				"produces": ["application/json"],
 				"parameters": [{
 					"name": "company_number",
@@ -20,33 +20,31 @@
 					"description": "Company number",
 					"required": true,
 					"type": "string",
-					"x-example": "1010311"
+					"x-example": ""
 				}],
 				"responses": {
 					"200": {
 						"description": "OK",
 						"schema": {
-							"$ref": "#/definitions/Company"
+							"$ref": "#/definitions/RegisteredOffice"
 						},
 						"examples": {
 							"application/json": {
-								"etag": "1aerygelkgeregeejkbk32ejheh4",
+								"etag": "32432476834636584df4345h4k55",
 								"kind": "registered-office-address",
 								"links": {
-									"self": "/company/01111111/registered-office-address"
+									"self": "/company/0132245/registered-office-address"
 								},
-								"address_line_1": "Testing House",
-								"address_line_2": "Testing Lane",
-								"country": "England",
-								"locality": "Colchester",
-								"region": "Essex",
-								"postal_code": "POST 1BY"
+								"address_line_1": "Looney Toones House, 20 Test Street",
+								"address_line_2": "Testerton",
+								"locality": "Test",
+								"postal_code": "T3ST 5ND"
 							}
 						}
 					}
 				},
 				"security": [{
-					"Companies house API Key": []
+					"API Key Auth": []
 				}]
 			}
 		}
@@ -58,29 +56,25 @@
 			"properties": {
 				"self": {
 					"type": "string",
-					"x-example": "/company/01509592/registered-office-address"
+					"x-example": "/company/0132245/registered-office-address"
 				}
 			}
 		},
-		"Company": {
-			"description": "Model for Company",
+		"RegisteredOffice": {
+			"description": "Model for RegisteredOffice",
 			"required": ["address_line_1"],
 			"properties": {
 				"address_line_1": {
 					"type": "string",
-					"x-example": "Severalls Hall"
+					"x-example": "Looney Toones House, 20 Test Street"
 				},
 				"address_line_2": {
 					"type": "string",
-					"x-example": "Severalls Lane"
-				},
-				"country": {
-					"type": "string",
-					"x-example": "England"
+					"x-example": "Testerton"
 				},
 				"etag": {
 					"type": "string",
-					"x-example": "285c095832f2fc98a36681f52d26479a875f0b3a"
+					"x-example": "32432476834636584df4345h4k55"
 				},
 				"kind": {
 					"type": "string",
@@ -88,29 +82,23 @@
 				},
 				"links": {
 					"$ref": "#/definitions/Links",
-					"x-example": "{\n  \"self\": \"/company/01509592/registered-office-address\"\n}"
+					"x-example": "{\n  \"self\": \"/company/0132245/registered-office-address\"\n}"
 				},
 				"locality": {
 					"type": "string",
-					"x-example": "Colchester"
+					"x-example": "Test"
 				},
 				"postal_code": {
 					"type": "string",
-					"x-example": "CO4 5JS"
-				},
-				"region": {
-					"type": "string",
-					"x-example": "Essex"
+					"x-example": "T3ST 5ND"
 				}
 			}
 		}
 	},
 	"securityDefinitions": {
-		"Companies house API Key": {
+		"API Key Auth": {
 			"description": "Default Authentication",
-			"type": "apiKey",
-			"name": "api_key",
-			"in": "query"
+			"type": "basic"
 		}
 	},
 	"security": [],
