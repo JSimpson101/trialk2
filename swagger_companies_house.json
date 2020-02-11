@@ -93,7 +93,12 @@
 			}
 		}
 	},
-	"securityDefinitions": {},
+	"securityDefinitions": {
+		"Basic Auth": {
+			"description": "Test",
+			"type": "basic"
+		}
+	},
 	"security": [],
 	"tags": [{
 		"name": "Company",
