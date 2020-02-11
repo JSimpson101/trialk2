@@ -43,9 +43,7 @@
 						}
 					}
 				},
-				"security": [{
-					"API Key Auth": []
-				}]
+				"security": []
 			}
 		}
 	},
@@ -95,12 +93,7 @@
 			}
 		}
 	},
-	"securityDefinitions": {
-		"API Key Auth": {
-			"description": "Default Authentication",
-			"type": "basic"
-		}
-	},
+	"securityDefinitions": {},
 	"security": [],
 	"tags": [{
 		"name": "Company",
