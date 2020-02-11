@@ -1,7 +1,7 @@
 {
 	"swagger": "2.0",
 	"info": {
-		"title": "Companies House",
+		"title": "Companieshouse",
 		"description": "API for api.companieshouse.gov.uk",
 		"version": "0.0.0"
 	},
@@ -12,7 +12,7 @@
 			"get": {
 				"tags": ["Company"],
 				"description": "Get registered office",
-				"operationId": "get_registered_office",
+				"operationId": "getRegisteredOffice",
 				"produces": ["application/json"],
 				"parameters": [{
 					"name": "company_number",
@@ -26,24 +26,26 @@
 					"200": {
 						"description": "OK",
 						"schema": {
-							"$ref": "#/definitions/RegisteredOffice"
+							"$ref": "#/definitions/GetRegisteredOffice"
 						},
 						"examples": {
 							"application/json": {
-								"etag": "32432476834636584df4345h4k55",
+								"etag": "09ce464d3d644a7d05c187a9323df8697cebab6b",
 								"kind": "registered-office-address",
 								"links": {
-									"self": "/company/0132245/registered-office-address"
+									"self": "/company/04145329/registered-office-address"
 								},
-								"address_line_1": "Looney Toones House, 20 Test Street",
-								"address_line_2": "Testerton",
-								"locality": "Test",
-								"postal_code": "T3ST 5ND"
+								"address_line_1": "Lindred House, 20 Lindred Road",
+								"address_line_2": "Brierfield",
+								"locality": "Nelson",
+								"postal_code": "BB9 5SR"
 							}
 						}
 					}
 				},
-				"security": []
+				"security": [{
+					"Default": []
+				}]
 			}
 		}
 	},
@@ -54,25 +56,25 @@
 			"properties": {
 				"self": {
 					"type": "string",
-					"x-example": "/company/0132245/registered-office-address"
+					"x-example": "/company/04145329/registered-office-address"
 				}
 			}
 		},
-		"RegisteredOffice": {
-			"description": "Model for RegisteredOffice",
+		"GetRegisteredOffice": {
+			"description": "Model for GetRegisteredOffice",
 			"required": ["address_line_1"],
 			"properties": {
 				"address_line_1": {
 					"type": "string",
-					"x-example": "Looney Toones House, 20 Test Street"
+					"x-example": "Lindred House, 20 Lindred Road"
 				},
 				"address_line_2": {
 					"type": "string",
-					"x-example": "Testerton"
+					"x-example": "Brierfield"
 				},
 				"etag": {
 					"type": "string",
-					"x-example": "32432476834636584df4345h4k55"
+					"x-example": "09ce464d3d644a7d05c187a9323df8697cebab6b"
 				},
 				"kind": {
 					"type": "string",
@@ -80,22 +82,22 @@
 				},
 				"links": {
 					"$ref": "#/definitions/Links",
-					"x-example": "{\n  \"self\": \"/company/0132245/registered-office-address\"\n}"
+					"x-example": "{\n  \"self\": \"/company/04145329/registered-office-address\"\n}"
 				},
 				"locality": {
 					"type": "string",
-					"x-example": "Test"
+					"x-example": "Nelson"
 				},
 				"postal_code": {
 					"type": "string",
-					"x-example": "T3ST 5ND"
+					"x-example": "BB9 5SR"
 				}
 			}
 		}
 	},
 	"securityDefinitions": {
-		"Basic Auth": {
-			"description": "Test",
+		"Default": {
+			"description": "Default Authentication",
 			"type": "basic"
 		}
 	},
