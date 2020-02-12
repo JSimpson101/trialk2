@@ -1,105 +1,74 @@
 {
 	"swagger": "2.0",
 	"info": {
-		"title": "Daisy Central",
-		"description": "API for DC",
+		"title": "Daisy",
+		"description": "API for daisycentral.daisy.group",
 		"version": "0.0.0"
 	},
 	"host": "localhost:17000",
 	"basePath": "/cgi-bin/index.cgi/ExternalServices/v1",
 	"schemes": ["http"],
 	"paths": {
-		"/SingleAccountStructure/GetAccounts": {
+		"/Account/Summary": {
 			"get": {
-				"tags": ["SingleAccountStructure"],
-				"summary": "Find account(s) by id",
-				"description": "Get accounts",
-				"operationId": "GetAccounts",
+				"tags": ["Account"],
+				"description": "Summary",
+				"operationId": "Summary",
 				"produces": ["application/json"],
 				"parameters": [{
-					"name": "object_ids",
+					"name": "account",
 					"in": "query",
-					"description": "object_ids",
+					"description": "Account",
 					"required": true,
-					"type": "array",
-					"items": {
-						"type": "string"
-					},
-					"x-example": "[\"QIK32606\"]"
+					"type": "string",
+					"x-example": "QIK32606"
 				}],
 				"responses": {
 					"200": {
 						"description": "OK",
 						"schema": {
-							"$ref": "#/definitions/GetAccounts"
+							"$ref": "#/definitions/Summary"
 						},
 						"examples": {
 							"application/json": {
-								"objects": [{
-									"msa": null,
-									"updated_by_email": "firstname.surname@email.io",
-									"division": "Retail",
-									"customer_type": null,
-									"postcode": "WN2 AAA",
-									"country": null,
-									"customer_support_executive_email": null,
-									"company_group_id": "COMP1",
-									"lead_engineer_name": "",
-									"service_manager_email": "john.doe@daisygroup.com",
-									"lead_engineer_employee_number": "000012171",
-									"is_head_account": 1,
-									"parent_account_id": null,
-									"billing_email": "billing.email@test.com",
-									"service_manager_employee_number": "000012162",
-									"contact_phone_number": "01234205630",
-									"service_manager_name": "Firstname Surname",
-									"updated_by_name": "Firstname Surname",
-									"dbam_email": null,
-									"county": "Lancashire",
-									"client_support_team": null,
-									"fam_employee_number": "000012181",
-									"updated_by_employee_number": "000013192",
-									"customer_support_executive_employee_number": null,
-									"fam_name": "Jane Doe",
-									"contact_name": "Firstname Surname",
-									"daisy_central_id": "QIK32606",
-									"customer_support_executive_name": "SMB FAM CS",
-									"active": 1,
-									"update_date": "2020-02-03 11:18:39",
-									"address_line_1": "address1",
-									"account_name": "account name",
-									"address_line_2": "address 2",
-									"unconfirmed_account_structure": "0",
-									"company_id": "UID0000004",
-									"fam_email": "first.last@email.com",
-									"dbam_name": "Employee Account",
-									"software_version": "Sage",
-									"lead_engineer_email": null,
-									"dbam_employee_number": "Generic",
-									"city": "Wigan"
-								}],
+								"data": {
+									"summary": {
+										"contact_department": null,
+										"county": "Wigan",
+										"city": "Hindley Green",
+										"contact_title": null,
+										"address_line_1": "Roar IT Ltd",
+										"contact_mobile_number": null,
+										"address_line_2": "Stratus House",
+										"contact_name": "Jane Wells",
+										"daisy_central_id": "QIK32606",
+										"vat_number": null,
+										"country": null,
+										"account_name": "A Demo Account",
+										"ebilling_enabled": 1,
+										"postcode": "WN2 4EY",
+										"contact_phone_number": "01234205630"
+									}
+								},
 								"status": "success"
 							}
 						}
 					}
 				},
 				"security": [{
-					"DC Auth": []
+					"DC Login": []
 				}]
 			}
 		}
 	},
 	"definitions": {
-		"GetAccounts": {
-			"description": "Model for GetAccounts",
-			"required": ["objects"],
+		"Summary": {
+			"description": "Model for Summary",
+			"required": ["data"],
 			"properties": {
-				"objects": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/Objects"
-					},
-					"x-example": "[\n  {\n    \"msa\": null,\n    \"updated_by_email\": \"test.test2@aruu.io\",\n    \"division\": \"Retail\",\n    \"customer_type\": null,\n    \"postcode\": \"WN2 4EY\",\n    \"country\": null,\n    \"customer_support_executive_email\": null,\n    \"company_group_id\": \"GCID000004\",\n    \"lead_engineer_name\": \"\",\n    \"service_manager_email\": \"Katy.Haigh@daisygroup.com\",\n    \"lead_engineer_employee_number\": \"000012171\",\n    \"is_head_account\": 1,\n    \"parent_account_id\": null,\n    \"billing_email\": \"jane.wells@live.co.uk\",\n    \"service_manager_employee_number\": \"000012162\",\n    \"contact_phone_number\": \"01234205630\",\n    \"service_manager_name\": \"Katy Haigh\",\n    \"updated_by_name\": \"Samuel Thistlethwaite\",\n    \"dbam_email\": null,\n    \"county\": \"Lancashire\",\n    \"client_support_team\": null,\n    \"fam_employee_number\": \"000012181\",\n    \"updated_by_employee_number\": \"000013192\",\n    \"customer_support_executive_employee_number\": null,\n    \"fam_name\": \"Jane Wells\",\n    \"contact_name\": \"Jane Wells\",\n    \"daisy_central_id\": \"QIK32606\",\n    \"customer_support_executive_name\": \"SMB FAM CS\",\n    \"active\": 1,\n    \"update_date\": \"2020-02-03 11:18:39\",\n    \"address_line_1\": \"Stratus House, Swan Lane\",\n    \"account_name\": \"A Demo Account Updated\",\n    \"address_line_2\": \"Hindley Green\",\n    \"unconfirmed_account_structure\": \"0\",\n    \"company_id\": \"UID0000004\",\n    \"fam_email\": \"jane.wells@daisygroup.com\",\n    \"dbam_name\": \"Employee Account\",\n    \"software_version\": \"Sage 200\",\n    \"lead_engineer_email\": null,\n    \"dbam_employee_number\": \"Generic\",\n    \"city\": \"Wigan\"\n  }\n]"
+				"data": {
+					"$ref": "#/definitions/Data",
+					"x-example": "{\n  \"summary\": {\n    \"contact_department\": null,\n    \"county\": \"Wigan\",\n    \"city\": \"Hindley Green\",\n    \"contact_title\": null,\n    \"address_line_1\": \"Roar IT Ltd\",\n    \"contact_mobile_number\": null,\n    \"address_line_2\": \"Stratus House\",\n    \"contact_name\": \"Jane Wells\",\n    \"daisy_central_id\": \"QIK32606\",\n    \"vat_number\": null,\n    \"country\": null,\n    \"account_name\": \"A Demo Account\",\n    \"ebilling_enabled\": 1,\n    \"postcode\": \"WN2 4EY\",\n    \"contact_phone_number\": \"01234205630\"\n  }\n}"
 				},
 				"status": {
 					"type": "string",
@@ -107,46 +76,43 @@
 				}
 			}
 		},
-		"Objects": {
-			"description": "Model for Objects",
+		"Data": {
+			"description": "Model for Data",
+			"required": ["summary"],
+			"properties": {
+				"summary": {
+					"$ref": "#/definitions/Summary2",
+					"x-example": "{\n  \"contact_department\": null,\n  \"county\": \"Wigan\",\n  \"city\": \"Hindley Green\",\n  \"contact_title\": null,\n  \"address_line_1\": \"Roar IT Ltd\",\n  \"contact_mobile_number\": null,\n  \"address_line_2\": \"Stratus House\",\n  \"contact_name\": \"Jane Wells\",\n  \"daisy_central_id\": \"QIK32606\",\n  \"vat_number\": null,\n  \"country\": null,\n  \"account_name\": \"A Demo Account\",\n  \"ebilling_enabled\": 1,\n  \"postcode\": \"WN2 4EY\",\n  \"contact_phone_number\": \"01234205630\"\n}"
+				}
+			}
+		},
+		"Summary2": {
+			"description": "Model for Summary2",
 			"required": ["account_name"],
 			"properties": {
 				"account_name": {
 					"type": "string",
-					"x-example": "A Demo Account Updated"
-				},
-				"active": {
-					"type": "integer",
-					"format": "int32",
-					"x-example": "1"
+					"x-example": "A Demo Account"
 				},
 				"address_line_1": {
 					"type": "string",
-					"x-example": "Swan Lane"
+					"x-example": "Roar IT Ltd"
 				},
 				"address_line_2": {
 					"type": "string",
-					"x-example": "Hindley Yekk"
-				},
-				"billing_email": {
-					"type": "string",
-					"x-example": "jane.doe@live.co.uk"
+					"x-example": "Stratus House"
 				},
 				"city": {
 					"type": "string",
-					"x-example": "Wigan"
+					"x-example": "Hindley Green"
 				},
-				"client_support_team": {
+				"contact_department": {
 					"type": "string",
 					"x-example": ""
 				},
-				"company_group_id": {
+				"contact_mobile_number": {
 					"type": "string",
-					"x-example": "GCID000004"
-				},
-				"company_id": {
-					"type": "string",
-					"x-example": "UID0000004"
+					"x-example": ""
 				},
 				"contact_name": {
 					"type": "string",
@@ -156,140 +122,47 @@
 					"type": "string",
 					"x-example": "01234205630"
 				},
+				"contact_title": {
+					"type": "string",
+					"x-example": ""
+				},
 				"country": {
 					"type": "string",
 					"x-example": ""
 				},
 				"county": {
 					"type": "string",
-					"x-example": "Lancashire"
-				},
-				"customer_support_executive_email": {
-					"type": "string",
-					"x-example": ""
-				},
-				"customer_support_executive_employee_number": {
-					"type": "string",
-					"x-example": ""
-				},
-				"customer_support_executive_name": {
-					"type": "string",
-					"x-example": "SMB FAM CS"
-				},
-				"customer_type": {
-					"type": "string",
-					"x-example": ""
+					"x-example": "Wigan"
 				},
 				"daisy_central_id": {
 					"type": "string",
 					"x-example": "QIK32606"
 				},
-				"dbam_email": {
-					"type": "string",
-					"x-example": ""
-				},
-				"dbam_employee_number": {
-					"type": "string",
-					"x-example": "Generic"
-				},
-				"dbam_name": {
-					"type": "string",
-					"x-example": "Employee Account"
-				},
-				"division": {
-					"type": "string",
-					"x-example": "Retail"
-				},
-				"fam_email": {
-					"type": "string",
-					"x-example": "jane.doe@test.com"
-				},
-				"fam_employee_number": {
-					"type": "string",
-					"x-example": "000012181"
-				},
-				"fam_name": {
-					"type": "string",
-					"x-example": "Josh Doe"
-				},
-				"is_head_account": {
+				"ebilling_enabled": {
 					"type": "integer",
 					"format": "int32",
 					"x-example": "1"
 				},
-				"lead_engineer_email": {
-					"type": "string",
-					"x-example": ""
-				},
-				"lead_engineer_employee_number": {
-					"type": "string",
-					"x-example": "000012171"
-				},
-				"lead_engineer_name": {
-					"type": "string",
-					"x-example": ""
-				},
-				"msa": {
-					"type": "string",
-					"x-example": ""
-				},
-				"parent_account_id": {
-					"type": "string",
-					"x-example": ""
-				},
 				"postcode": {
 					"type": "string",
-					"x-example": "WEE G4N"
+					"x-example": "WN2 4EY"
 				},
-				"service_manager_email": {
+				"vat_number": {
 					"type": "string",
-					"x-example": "tester@test.com"
-				},
-				"service_manager_employee_number": {
-					"type": "string",
-					"x-example": "000012162"
-				},
-				"service_manager_name": {
-					"type": "string",
-					"x-example": "Katy Haigh"
-				},
-				"software_version": {
-					"type": "string",
-					"x-example": "Sage 200"
-				},
-				"unconfirmed_account_structure": {
-					"type": "string",
-					"x-example": "0"
-				},
-				"update_date": {
-					"type": "string",
-					"format": "date-time",
-					"x-example": "2020-02-03 11:18:39"
-				},
-				"updated_by_email": {
-					"type": "string",
-					"x-example": "random.email@test.com"
-				},
-				"updated_by_employee_number": {
-					"type": "string",
-					"x-example": "000013192"
-				},
-				"updated_by_name": {
-					"type": "string",
-					"x-example": "Sam Nonthistlethwaite"
+					"x-example": ""
 				}
 			}
 		}
 	},
 	"securityDefinitions": {
-		"DC Auth": {
-			"description": "Basic Auth for DC",
+		"DC Login": {
+			"description": "DC Login credentials",
 			"type": "basic"
 		}
 	},
 	"security": [],
 	"tags": [{
-		"name": "SingleAccountStructure",
-		"description": "Operations about SingleAccountStructure"
+		"name": "Account",
+		"description": "Operations about Account"
 	}]
 }
