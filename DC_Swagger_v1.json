@@ -2,13 +2,85 @@
 	"swagger": "2.0",
 	"info": {
 		"title": "Daisy",
-		"description": "API for 10.4.11.173",
+		"description": "API for daisycentral.daisy.group",
 		"version": "0.0.0"
 	},
 	"host": "localhost:17000",
 	"basePath": "/cgi-bin/index.cgi/ExternalServices/v1",
 	"schemes": ["http"],
 	"paths": {
+		"/WLR3/InstallationDetails": {
+			"get": {
+				"tags": ["WLR3"],
+				"description": "Installation details",
+				"operationId": "getInstallationDetails",
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "cli",
+					"in": "query",
+					"description": "cli",
+					"required": true,
+					"type": "string",
+					"x-example": "01909888444"
+				}, {
+					"name": "postcode",
+					"in": "query",
+					"description": "postcode",
+					"required": true,
+					"type": "string",
+					"x-example": "P0ST 6OD"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/InstallationDetails"
+						},
+						"examples": {
+							"application/json": {
+								"care_level": "MED",
+								"css_exchange_code": "NEL",
+								"pending_orders": "",
+								"wholesale_calls_present": "true",
+								"line_quantity_including_main_line": "1",
+								"directory_infos": {
+									"directory_info": {
+										"directory_entry_line": "MAIN",
+										"directory": {
+											"type": "EX_DIRECTORY_NO_CALLS_OFFERED",
+											"business_name": "Acdc",
+											"group_listing_required": "false",
+											"location_option": "BUSINESS",
+											"partial_address_required": "false"
+										},
+										"directory_entry_listing": "BUSINESS",
+										"directory_entry_type": "EX_DIRECTORY_NO_CALLS_OFFERED",
+										"directory_entry_details": "Acdc"
+									}
+								},
+								"ownership_confirmation_flag": "true",
+								"narrowband_services_indicator": "false",
+								"calling_and_network_features": "",
+								"temp_structure": "false",
+								"termination_type": "NTE",
+								"service_type": "PSTN_SINGLE_LINE",
+								"installation_type": "STANDARD",
+								"status": "success",
+								"aux_line_quantity": "0",
+								"line_type": "BASIC",
+								"ownership_confirmation": "true",
+								"css_database_code": "LC",
+								"css_exchange_type": "SystemX",
+								"cps_present": "false"
+							}
+						}
+					}
+				},
+				"security": [{
+					"DC Login": []
+				}]
+			}
+		},
 		"/Account/Summary": {
 			"get": {
 				"tags": ["Account"],
@@ -18,14 +90,14 @@
 				"parameters": [{
 					"name": "account",
 					"in": "query",
-					"description": "account",
+					"description": "Account",
 					"required": true,
 					"type": "string",
 					"x-example": "QIK32606"
 				}],
 				"responses": {
 					"200": {
-						"description": "Account summary information",
+						"description": "OK",
 						"schema": {
 							"$ref": "#/definitions/Summary"
 						},
@@ -33,47 +105,21 @@
 							"application/json": {
 								"data": {
 									"summary": {
-										"customer_type": null,
-										"lead_engineer_name": "",
-										"customer_support_executive_name": "SME Customer Services Team 2",
-										"city": "Test Place",
-										"dbam_email": null,
-										"contact_phone_number": "0118999661",
-										"division": "Retail",
-										"msa": null,
+										"contact_department": null,
+										"county": "Wigan",
+										"city": "Hindley Green",
+										"contact_title": null,
+										"address_line_1": "Roar IT Ltd",
+										"contact_mobile_number": null,
+										"address_line_2": "Stratus House",
+										"contact_name": "Jane Wells",
 										"daisy_central_id": "QIK32606",
-										"contact_name": "Jane Doe",
-										"dbam_name": "Employee Account",
-										"fam_employee_number": "Generic",
-										"customer_support_executive_email": null,
-										"unconfirmed_account_structure": 0,
-										"software_version": "Sage 200",
-										"billing_email": "jane.doe@test.co.uk",
-										"account_name": "A Demo Account",
-										"customer_support_executive_employee_number": "Generic",
-										"updated_by_name": "website website",
-										"fam_name": "Employee Account",
-										"county": "London",
-										"client_support_team": null,
-										"lead_engineer_email": null,
+										"vat_number": null,
 										"country": null,
-										"service_manager_employee_number": "0118232",
-										"postcode": "SW10 1BY",
-										"update_date": "2020-01-13 12:26:49",
-										"fam_email": null,
-										"address_line_2": "Test House",
-										"company_id": "UID00000",
-										"active": 1,
-										"company_group_id": "GC111111",
-										"updated_by_employee_number": null,
-										"service_manager_name": "",
-										"address_line_1": "Test Line 1",
-										"lead_engineer_employee_number": "10123213",
-										"parent_account_id": null,
-										"dbam_employee_number": "Generic",
-										"service_manager_email": null,
-										"updated_by_email": null,
-										"is_head_account": 1
+										"account_name": "A Demo Account",
+										"ebilling_enabled": 1,
+										"postcode": "WN2 4EY",
+										"contact_phone_number": "01234205630"
 									}
 								},
 								"status": "success"
@@ -82,19 +128,167 @@
 					}
 				},
 				"security": [{
-					"DC Credentials": []
+					"DC Login": []
 				}]
 			}
 		}
 	},
 	"definitions": {
+		"InstallationDetails": {
+			"description": "Model for InstallationDetails",
+			"required": ["aux_line_quantity"],
+			"properties": {
+				"aux_line_quantity": {
+					"type": "string",
+					"x-example": "0"
+				},
+				"calling_and_network_features": {
+					"type": "string",
+					"x-example": ""
+				},
+				"care_level": {
+					"type": "string",
+					"x-example": "MED"
+				},
+				"cps_present": {
+					"type": "string",
+					"x-example": "false"
+				},
+				"css_database_code": {
+					"type": "string",
+					"x-example": "LC"
+				},
+				"css_exchange_code": {
+					"type": "string",
+					"x-example": "NEL"
+				},
+				"css_exchange_type": {
+					"type": "string",
+					"x-example": "SystemX"
+				},
+				"directory_infos": {
+					"$ref": "#/definitions/DirectoryInfos",
+					"x-example": "{\n  \"directory_info\": {\n    \"directory_entry_line\": \"MAIN\",\n    \"directory\": {\n      \"type\": \"EX_DIRECTORY_NO_CALLS_OFFERED\",\n      \"business_name\": \"Acdc\",\n      \"group_listing_required\": \"false\",\n      \"location_option\": \"BUSINESS\",\n      \"partial_address_required\": \"false\"\n    },\n    \"directory_entry_listing\": \"BUSINESS\",\n    \"directory_entry_type\": \"EX_DIRECTORY_NO_CALLS_OFFERED\",\n    \"directory_entry_details\": \"Acdc\"\n  }\n}"
+				},
+				"installation_type": {
+					"type": "string",
+					"x-example": "STANDARD"
+				},
+				"line_quantity_including_main_line": {
+					"type": "string",
+					"x-example": "1"
+				},
+				"line_type": {
+					"type": "string",
+					"x-example": "BASIC"
+				},
+				"narrowband_services_indicator": {
+					"type": "string",
+					"x-example": "false"
+				},
+				"ownership_confirmation": {
+					"type": "string",
+					"x-example": "true"
+				},
+				"ownership_confirmation_flag": {
+					"type": "string",
+					"x-example": "true"
+				},
+				"pending_orders": {
+					"type": "string",
+					"x-example": ""
+				},
+				"service_type": {
+					"type": "string",
+					"x-example": "PSTN_SINGLE_LINE"
+				},
+				"status": {
+					"type": "string",
+					"x-example": "success"
+				},
+				"temp_structure": {
+					"type": "string",
+					"x-example": "false"
+				},
+				"termination_type": {
+					"type": "string",
+					"x-example": "NTE"
+				},
+				"wholesale_calls_present": {
+					"type": "string",
+					"x-example": "true"
+				}
+			}
+		},
+		"Directory": {
+			"description": "Model for Directory",
+			"required": ["business_name"],
+			"properties": {
+				"business_name": {
+					"type": "string",
+					"x-example": "Acdc"
+				},
+				"group_listing_required": {
+					"type": "string",
+					"x-example": "false"
+				},
+				"location_option": {
+					"type": "string",
+					"x-example": "BUSINESS"
+				},
+				"partial_address_required": {
+					"type": "string",
+					"x-example": "false"
+				},
+				"type": {
+					"type": "string",
+					"x-example": "EX_DIRECTORY_NO_CALLS_OFFERED"
+				}
+			}
+		},
+		"DirectoryInfo": {
+			"description": "Model for DirectoryInfo",
+			"required": ["directory"],
+			"properties": {
+				"directory": {
+					"$ref": "#/definitions/Directory",
+					"x-example": "{\n  \"type\": \"EX_DIRECTORY_NO_CALLS_OFFERED\",\n  \"business_name\": \"Acdc\",\n  \"group_listing_required\": \"false\",\n  \"location_option\": \"BUSINESS\",\n  \"partial_address_required\": \"false\"\n}"
+				},
+				"directory_entry_details": {
+					"type": "string",
+					"x-example": "Acdc"
+				},
+				"directory_entry_line": {
+					"type": "string",
+					"x-example": "MAIN"
+				},
+				"directory_entry_listing": {
+					"type": "string",
+					"x-example": "BUSINESS"
+				},
+				"directory_entry_type": {
+					"type": "string",
+					"x-example": "EX_DIRECTORY_NO_CALLS_OFFERED"
+				}
+			}
+		},
+		"DirectoryInfos": {
+			"description": "Model for DirectoryInfos",
+			"required": ["directory_info"],
+			"properties": {
+				"directory_info": {
+					"$ref": "#/definitions/DirectoryInfo",
+					"x-example": "{\n  \"directory_entry_line\": \"MAIN\",\n  \"directory\": {\n    \"type\": \"EX_DIRECTORY_NO_CALLS_OFFERED\",\n    \"business_name\": \"Acdc\",\n    \"group_listing_required\": \"false\",\n    \"location_option\": \"BUSINESS\",\n    \"partial_address_required\": \"false\"\n  },\n  \"directory_entry_listing\": \"BUSINESS\",\n  \"directory_entry_type\": \"EX_DIRECTORY_NO_CALLS_OFFERED\",\n  \"directory_entry_details\": \"Acdc\"\n}"
+				}
+			}
+		},
 		"Summary": {
 			"description": "Model for Summary",
 			"required": ["data"],
 			"properties": {
 				"data": {
 					"$ref": "#/definitions/Data",
-					"x-example": "{\n  \"summary\": {\n    \"customer_type\": null,\n    \"lead_engineer_name\": \"\",\n    \"customer_support_executive_name\": \"SME Customer Services Team 2\",\n    \"city\": \"Test Place\",\n    \"dbam_email\": null,\n    \"contact_phone_number\": \"01234205630\",\n    \"division\": \"Retail\",\n    \"msa\": null,\n    \"daisy_central_id\": \"QIK32606\",\n    \"contact_name\": \"Jane Doe\",\n    \"dbam_name\": \"Employee Account\",\n    \"fam_employee_number\": \"Generic\",\n    \"customer_support_executive_email\": null,\n    \"unconfirmed_account_structure\": 0,\n    \"software_version\": \"Sage 200\",\n    \"billing_email\": \"jane.doe@live.co.uk\",\n    \"account_name\": \"A Demo Account\",\n    \"customer_support_executive_employee_number\": \"Generic\",\n    \"updated_by_name\": \"website website\",\n    \"fam_name\": \"Employee Account\",\n    \"county\": \"Wigan\",\n    \"client_support_team\": null,\n    \"lead_engineer_email\": null,\n    \"country\": null,\n    \"service_manager_employee_number\": \"000012171\",\n    \"postcode\": \"WN2 4EY\",\n    \"update_date\": \"2020-01-13 12:26:49\",\n    \"fam_email\": null,\n    \"address_line_2\": \"Stratus House\",\n    \"company_id\": \"UID0000004\",\n    \"active\": 1,\n    \"company_group_id\": \"GCID000004\",\n    \"updated_by_employee_number\": null,\n    \"service_manager_name\": \"\",\n    \"address_line_1\": \"Test IT Ltd\",\n    \"lead_engineer_employee_number\": \"000012171\",\n    \"parent_account_id\": null,\n    \"dbam_employee_number\": \"Generic\",\n    \"service_manager_email\": null,\n    \"updated_by_email\": null,\n    \"is_head_account\": 1\n  }\n}"
+					"x-example": "{\n  \"summary\": {\n    \"contact_department\": null,\n    \"county\": \"Wigan\",\n    \"city\": \"Hindley Green\",\n    \"contact_title\": null,\n    \"address_line_1\": \"Roar IT Ltd\",\n    \"contact_mobile_number\": null,\n    \"address_line_2\": \"Stratus House\",\n    \"contact_name\": \"Jane Wells\",\n    \"daisy_central_id\": \"QIK32606\",\n    \"vat_number\": null,\n    \"country\": null,\n    \"account_name\": \"A Demo Account\",\n    \"ebilling_enabled\": 1,\n    \"postcode\": \"WN2 4EY\",\n    \"contact_phone_number\": \"01234205630\"\n  }\n}"
 				},
 				"status": {
 					"type": "string",
@@ -108,7 +302,7 @@
 			"properties": {
 				"summary": {
 					"$ref": "#/definitions/Summary2",
-					"x-example": "{\n  \"customer_type\": null,\n  \"lead_engineer_name\": \"\",\n  \"customer_support_executive_name\": \"SME Customer Services Team 2\",\n  \"city\": \"Test Place\",\n  \"dbam_email\": null,\n  \"contact_phone_number\": \"01234205630\",\n  \"division\": \"Retail\",\n  \"msa\": null,\n  \"daisy_central_id\": \"QIK32606\",\n  \"contact_name\": \"Jane Doe\",\n  \"dbam_name\": \"Employee Account\",\n  \"fam_employee_number\": \"Generic\",\n  \"customer_support_executive_email\": null,\n  \"unconfirmed_account_structure\": 0,\n  \"software_version\": \"Sage 200\",\n  \"billing_email\": \"jane.doe@live.co.uk\",\n  \"account_name\": \"A Demo Account\",\n  \"customer_support_executive_employee_number\": \"Generic\",\n  \"updated_by_name\": \"website website\",\n  \"fam_name\": \"Employee Account\",\n  \"county\": \"Wigan\",\n  \"client_support_team\": null,\n  \"lead_engineer_email\": null,\n  \"country\": null,\n  \"service_manager_employee_number\": \"000012171\",\n  \"postcode\": \"WN2 4EY\",\n  \"update_date\": \"2020-01-13 12:26:49\",\n  \"fam_email\": null,\n  \"address_line_2\": \"Stratus House\",\n  \"company_id\": \"UID0000004\",\n  \"active\": 1,\n  \"company_group_id\": \"GCID000004\",\n  \"updated_by_employee_number\": null,\n  \"service_manager_name\": \"\",\n  \"address_line_1\": \"Test IT Ltd\",\n  \"lead_engineer_employee_number\": \"000012171\",\n  \"parent_account_id\": null,\n  \"dbam_employee_number\": \"Generic\",\n  \"service_manager_email\": null,\n  \"updated_by_email\": null,\n  \"is_head_account\": 1\n}"
+					"x-example": "{\n  \"contact_department\": null,\n  \"county\": \"Wigan\",\n  \"city\": \"Hindley Green\",\n  \"contact_title\": null,\n  \"address_line_1\": \"Roar IT Ltd\",\n  \"contact_mobile_number\": null,\n  \"address_line_2\": \"Stratus House\",\n  \"contact_name\": \"Jane Wells\",\n  \"daisy_central_id\": \"QIK32606\",\n  \"vat_number\": null,\n  \"country\": null,\n  \"account_name\": \"A Demo Account\",\n  \"ebilling_enabled\": 1,\n  \"postcode\": \"WN2 4EY\",\n  \"contact_phone_number\": \"01234205630\"\n}"
 				}
 			}
 		},
@@ -120,46 +314,37 @@
 					"type": "string",
 					"x-example": "A Demo Account"
 				},
-				"active": {
-					"type": "integer",
-					"format": "int32",
-					"x-example": "1"
-				},
 				"address_line_1": {
 					"type": "string",
-					"x-example": "Test IT Ltd"
+					"x-example": "Roar IT Ltd"
 				},
 				"address_line_2": {
 					"type": "string",
-					"x-example": "Test House"
-				},
-				"billing_email": {
-					"type": "string",
-					"x-example": "jane.doe@live.co.uk"
+					"x-example": "Stratus House"
 				},
 				"city": {
 					"type": "string",
-					"x-example": "Test Place"
+					"x-example": "Hindley Green"
 				},
-				"client_support_team": {
+				"contact_department": {
 					"type": "string",
 					"x-example": ""
 				},
-				"company_group_id": {
+				"contact_mobile_number": {
 					"type": "string",
-					"x-example": "GCID000004"
-				},
-				"company_id": {
-					"type": "string",
-					"x-example": "UID0000004"
+					"x-example": ""
 				},
 				"contact_name": {
 					"type": "string",
-					"x-example": "Jane Doe"
+					"x-example": "Jane Wells"
 				},
 				"contact_phone_number": {
 					"type": "string",
 					"x-example": "01234205630"
+				},
+				"contact_title": {
+					"type": "string",
+					"x-example": ""
 				},
 				"country": {
 					"type": "string",
@@ -169,127 +354,29 @@
 					"type": "string",
 					"x-example": "Wigan"
 				},
-				"customer_support_executive_email": {
-					"type": "string",
-					"x-example": ""
-				},
-				"customer_support_executive_employee_number": {
-					"type": "string",
-					"x-example": "Generic"
-				},
-				"customer_support_executive_name": {
-					"type": "string",
-					"x-example": "SME Customer Services Team 2"
-				},
-				"customer_type": {
-					"type": "string",
-					"x-example": ""
-				},
 				"daisy_central_id": {
 					"type": "string",
 					"x-example": "QIK32606"
 				},
-				"dbam_email": {
-					"type": "string",
-					"x-example": ""
-				},
-				"dbam_employee_number": {
-					"type": "string",
-					"x-example": "Generic"
-				},
-				"dbam_name": {
-					"type": "string",
-					"x-example": "Employee Account"
-				},
-				"division": {
-					"type": "string",
-					"x-example": "Retail"
-				},
-				"fam_email": {
-					"type": "string",
-					"x-example": ""
-				},
-				"fam_employee_number": {
-					"type": "string",
-					"x-example": "Generic"
-				},
-				"fam_name": {
-					"type": "string",
-					"x-example": "Employee Account"
-				},
-				"is_head_account": {
+				"ebilling_enabled": {
 					"type": "integer",
 					"format": "int32",
 					"x-example": "1"
-				},
-				"lead_engineer_email": {
-					"type": "string",
-					"x-example": ""
-				},
-				"lead_engineer_employee_number": {
-					"type": "string",
-					"x-example": "000012171"
-				},
-				"lead_engineer_name": {
-					"type": "string",
-					"x-example": ""
-				},
-				"msa": {
-					"type": "string",
-					"x-example": ""
-				},
-				"parent_account_id": {
-					"type": "string",
-					"x-example": ""
 				},
 				"postcode": {
 					"type": "string",
 					"x-example": "WN2 4EY"
 				},
-				"service_manager_email": {
+				"vat_number": {
 					"type": "string",
 					"x-example": ""
-				},
-				"service_manager_employee_number": {
-					"type": "string",
-					"x-example": "000012171"
-				},
-				"service_manager_name": {
-					"type": "string",
-					"x-example": ""
-				},
-				"software_version": {
-					"type": "string",
-					"x-example": "Sage 200"
-				},
-				"unconfirmed_account_structure": {
-					"type": "integer",
-					"format": "int32",
-					"x-example": "0"
-				},
-				"update_date": {
-					"type": "string",
-					"format": "date-time",
-					"x-example": "2020-01-13 12:26:49"
-				},
-				"updated_by_email": {
-					"type": "string",
-					"x-example": ""
-				},
-				"updated_by_employee_number": {
-					"type": "string",
-					"x-example": ""
-				},
-				"updated_by_name": {
-					"type": "string",
-					"x-example": "website website"
 				}
 			}
 		}
 	},
 	"securityDefinitions": {
-		"DC Credentials": {
-			"description": "Default Authentication for DC is your username/password",
+		"DC Login": {
+			"description": "DC Login credentials",
 			"type": "basic"
 		}
 	},
@@ -297,5 +384,8 @@
 	"tags": [{
 		"name": "Account",
 		"description": "Operations about Account"
+	}, {
+		"name": "WLR3",
+		"description": "Operations about WLR3"
 	}]
 }
