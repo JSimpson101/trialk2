@@ -9,6 +9,78 @@
 	"basePath": "/cgi-bin/index.cgi/ExternalServices/v1",
 	"schemes": ["http"],
 	"paths": {
+		"/WLR3/InstallationDetails": {
+			"get": {
+				"tags": ["WLR3"],
+				"description": "Installation details",
+				"operationId": "getInstallationDetails",
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "cli",
+					"in": "query",
+					"description": "cli",
+					"required": true,
+					"type": "string",
+					"x-example": "01909888444"
+				}, {
+					"name": "postcode",
+					"in": "query",
+					"description": "postcode",
+					"required": true,
+					"type": "string",
+					"x-example": "P0ST 6OD"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/InstallationDetails"
+						},
+						"examples": {
+							"application/json": {
+								"care_level": "MED",
+								"css_exchange_code": "NEL",
+								"pending_orders": "",
+								"wholesale_calls_present": "true",
+								"line_quantity_including_main_line": "1",
+								"directory_infos": {
+									"directory_info": {
+										"directory_entry_line": "MAIN",
+										"directory": {
+											"type": "EX_DIRECTORY_NO_CALLS_OFFERED",
+											"business_name": "Acdc",
+											"group_listing_required": "false",
+											"location_option": "BUSINESS",
+											"partial_address_required": "false"
+										},
+										"directory_entry_listing": "BUSINESS",
+										"directory_entry_type": "EX_DIRECTORY_NO_CALLS_OFFERED",
+										"directory_entry_details": "Acdc"
+									}
+								},
+								"ownership_confirmation_flag": "true",
+								"narrowband_services_indicator": "false",
+								"calling_and_network_features": "",
+								"temp_structure": "false",
+								"termination_type": "NTE",
+								"service_type": "PSTN_SINGLE_LINE",
+								"installation_type": "STANDARD",
+								"status": "success",
+								"aux_line_quantity": "0",
+								"line_type": "BASIC",
+								"ownership_confirmation": "true",
+								"css_database_code": "LC",
+								"css_exchange_type": "SystemX",
+								"cps_present": "false"
+							}
+						}
+					}
+				},
+				"security": [{
+					"DC Login": []
+				}]
+			}
+		},
 		"/Account/Summary": {
 			"get": {
 				"tags": ["Account"],
@@ -62,6 +134,154 @@
 		}
 	},
 	"definitions": {
+		"InstallationDetails": {
+			"description": "Model for InstallationDetails",
+			"required": ["aux_line_quantity"],
+			"properties": {
+				"aux_line_quantity": {
+					"type": "string",
+					"x-example": "0"
+				},
+				"calling_and_network_features": {
+					"type": "string",
+					"x-example": ""
+				},
+				"care_level": {
+					"type": "string",
+					"x-example": "MED"
+				},
+				"cps_present": {
+					"type": "string",
+					"x-example": "false"
+				},
+				"css_database_code": {
+					"type": "string",
+					"x-example": "LC"
+				},
+				"css_exchange_code": {
+					"type": "string",
+					"x-example": "NEL"
+				},
+				"css_exchange_type": {
+					"type": "string",
+					"x-example": "SystemX"
+				},
+				"directory_infos": {
+					"$ref": "#/definitions/DirectoryInfos",
+					"x-example": "{\n  \"directory_info\": {\n    \"directory_entry_line\": \"MAIN\",\n    \"directory\": {\n      \"type\": \"EX_DIRECTORY_NO_CALLS_OFFERED\",\n      \"business_name\": \"Acdc\",\n      \"group_listing_required\": \"false\",\n      \"location_option\": \"BUSINESS\",\n      \"partial_address_required\": \"false\"\n    },\n    \"directory_entry_listing\": \"BUSINESS\",\n    \"directory_entry_type\": \"EX_DIRECTORY_NO_CALLS_OFFERED\",\n    \"directory_entry_details\": \"Acdc\"\n  }\n}"
+				},
+				"installation_type": {
+					"type": "string",
+					"x-example": "STANDARD"
+				},
+				"line_quantity_including_main_line": {
+					"type": "string",
+					"x-example": "1"
+				},
+				"line_type": {
+					"type": "string",
+					"x-example": "BASIC"
+				},
+				"narrowband_services_indicator": {
+					"type": "string",
+					"x-example": "false"
+				},
+				"ownership_confirmation": {
+					"type": "string",
+					"x-example": "true"
+				},
+				"ownership_confirmation_flag": {
+					"type": "string",
+					"x-example": "true"
+				},
+				"pending_orders": {
+					"type": "string",
+					"x-example": ""
+				},
+				"service_type": {
+					"type": "string",
+					"x-example": "PSTN_SINGLE_LINE"
+				},
+				"status": {
+					"type": "string",
+					"x-example": "success"
+				},
+				"temp_structure": {
+					"type": "string",
+					"x-example": "false"
+				},
+				"termination_type": {
+					"type": "string",
+					"x-example": "NTE"
+				},
+				"wholesale_calls_present": {
+					"type": "string",
+					"x-example": "true"
+				}
+			}
+		},
+		"Directory": {
+			"description": "Model for Directory",
+			"required": ["business_name"],
+			"properties": {
+				"business_name": {
+					"type": "string",
+					"x-example": "Acdc"
+				},
+				"group_listing_required": {
+					"type": "string",
+					"x-example": "false"
+				},
+				"location_option": {
+					"type": "string",
+					"x-example": "BUSINESS"
+				},
+				"partial_address_required": {
+					"type": "string",
+					"x-example": "false"
+				},
+				"type": {
+					"type": "string",
+					"x-example": "EX_DIRECTORY_NO_CALLS_OFFERED"
+				}
+			}
+		},
+		"DirectoryInfo": {
+			"description": "Model for DirectoryInfo",
+			"required": ["directory"],
+			"properties": {
+				"directory": {
+					"$ref": "#/definitions/Directory",
+					"x-example": "{\n  \"type\": \"EX_DIRECTORY_NO_CALLS_OFFERED\",\n  \"business_name\": \"Acdc\",\n  \"group_listing_required\": \"false\",\n  \"location_option\": \"BUSINESS\",\n  \"partial_address_required\": \"false\"\n}"
+				},
+				"directory_entry_details": {
+					"type": "string",
+					"x-example": "Acdc"
+				},
+				"directory_entry_line": {
+					"type": "string",
+					"x-example": "MAIN"
+				},
+				"directory_entry_listing": {
+					"type": "string",
+					"x-example": "BUSINESS"
+				},
+				"directory_entry_type": {
+					"type": "string",
+					"x-example": "EX_DIRECTORY_NO_CALLS_OFFERED"
+				}
+			}
+		},
+		"DirectoryInfos": {
+			"description": "Model for DirectoryInfos",
+			"required": ["directory_info"],
+			"properties": {
+				"directory_info": {
+					"$ref": "#/definitions/DirectoryInfo",
+					"x-example": "{\n  \"directory_entry_line\": \"MAIN\",\n  \"directory\": {\n    \"type\": \"EX_DIRECTORY_NO_CALLS_OFFERED\",\n    \"business_name\": \"Acdc\",\n    \"group_listing_required\": \"false\",\n    \"location_option\": \"BUSINESS\",\n    \"partial_address_required\": \"false\"\n  },\n  \"directory_entry_listing\": \"BUSINESS\",\n  \"directory_entry_type\": \"EX_DIRECTORY_NO_CALLS_OFFERED\",\n  \"directory_entry_details\": \"Acdc\"\n}"
+				}
+			}
+		},
 		"Summary": {
 			"description": "Model for Summary",
 			"required": ["data"],
@@ -164,5 +384,8 @@
 	"tags": [{
 		"name": "Account",
 		"description": "Operations about Account"
+	}, {
+		"name": "WLR3",
+		"description": "Operations about WLR3"
 	}]
 }
