@@ -5,10 +5,430 @@
 		"description": "API for daisycentral.daisy.group",
 		"version": "0.0.0"
 	},
-	"host": "localhost:17000",
+	"host": "daisycentral.daisy.group",
 	"basePath": "/cgi-bin/index.cgi/ExternalServices/v1",
 	"schemes": ["http"],
 	"paths": {
+		"/Product/BroadbandSearch": {
+			"get": {
+				"tags": ["Product"],
+				"description": "Broadband search",
+				"operationId": "BroadbandSearch",
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "postcode",
+					"in": "query",
+					"description": "postcode",
+					"required": true,
+					"type": "string",
+					"x-example": ""
+				}, {
+					"name": "address_reference",
+					"in": "query",
+					"description": "address_reference",
+					"required": true,
+					"type": "string",
+					"x-example": ""
+				}, {
+					"name": "css_database_code",
+					"in": "query",
+					"description": "css_database_code",
+					"required": true,
+					"type": "string",
+					"x-example": ""
+				}, {
+					"name": "no_realms",
+					"in": "query",
+					"description": "no_realms",
+					"required": false,
+					"default": "1",
+					"type": "integer",
+					"format": "int32",
+					"x-example": ""
+				}, {
+					"name": "standard_lead_times",
+					"in": "query",
+					"description": "standard_lead_times",
+					"required": false,
+					"default": "1",
+					"type": "integer",
+					"format": "int32",
+					"x-example": "1"
+				}, {
+					"name": "category_id",
+					"in": "query",
+					"description": "category_id",
+					"required": false,
+					"default": "464",
+					"type": "integer",
+					"format": "int32",
+					"x-example": ""
+				}, {
+					"name": "rates_in_mbps",
+					"in": "query",
+					"description": "rates_in_mbps",
+					"required": false,
+					"default": "1",
+					"type": "integer",
+					"format": "int32",
+					"x-example": ""
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/BroadbandSearch"
+						},
+						"examples": {
+							"application/json": {
+								"mpf_response_details": {
+									"mpf_available": 0,
+									"error_message": null
+								},
+								"total": 0,
+								"tags_response_details": {
+									"tags_values": {
+										"fttc_gfast": {
+											"range_b_top_upstream": "",
+											"range_a_top_downstream": "",
+											"rate_adaptive": "",
+											"range_b_top_downstream": "",
+											"range_a_top_upstream": "",
+											"range_b_bottom_upstream": "",
+											"range_a_bottom_upstream": "",
+											"range_b_bottom_downstream": "",
+											"range_a_bottom_downstream": "",
+											"range_a_downstream_handback_threshold": "",
+											"range_b_downstream_handback_threshold": ""
+										},
+										"plus": {
+											"rate_adaptive": "",
+											"min_range": "",
+											"max_speed": "",
+											"max_range": "",
+											"annexm": {
+												"rate_adaptive": "",
+												"min_range": "",
+												"max_speed_down": "",
+												"max_speed_up": "",
+												"max_range": ""
+											}
+										},
+										"fttc": {
+											"range_a_bottom_downstream": "79000",
+											"range_b_downstream_handback_threshold": "77600",
+											"range_a_downstream_handback_threshold": "78000",
+											"range_a_bottom_upstream": "19000",
+											"range_b_bottom_downstream": "79000",
+											"range_b_bottom_upstream": "19000",
+											"range_a_top_upstream": "20000",
+											"rate_adaptive": "G",
+											"range_b_top_downstream": "80000",
+											"range_b_top_upstream": "20000",
+											"range_a_top_downstream": "80000"
+										},
+										"max": {
+											"max_speed": "",
+											"max_range": "",
+											"min_range": "",
+											"rate_adaptive": ""
+										},
+										"classic": {
+											"reason_code": "Z",
+											"rate_adaptive": "G",
+											"max_speed": "",
+											"fixed_rate": "G"
+										}
+									},
+									"postcode": "HS4 3XU",
+									"error_code": "0"
+								},
+								"broadband_rates": {
+									"None": {
+										"TTB_WLR_FTTC": {
+											"PLUS": {
+												"range_a_top_upstream": "20.00",
+												"estimated_download_range": "79.00 - 80.00",
+												"throughput_percentage": "100.00",
+												"range_a_top_downstream": "80.00",
+												"range_a_bottom_downstream": "79.00",
+												"range_b_downstream_handback_threshold": null,
+												"range_a_downstream_handback_threshold": null,
+												"max_downspeed": "80.00",
+												"estimated_upload_range": "19.00 - 20.00",
+												"max_upspeed": "20.00",
+												"range_b_top_downstream": "80.00",
+												"range_b_top_upstream": "20.00",
+												"minimum_guaranteed_speed": "80.00",
+												"range_a_bottom_upstream": "19.00",
+												"range_b_bottom_downstream": "79.00",
+												"range_b_bottom_upstream": "19.00"
+											},
+											"STANDARD": {
+												"range_b_bottom_upstream": "10.00",
+												"range_b_bottom_downstream": "40.00",
+												"range_a_bottom_upstream": "10.00",
+												"minimum_guaranteed_speed": "40.00",
+												"range_b_top_upstream": "10.00",
+												"range_b_top_downstream": "40.00",
+												"max_upspeed": "10.00",
+												"estimated_upload_range": "10.00",
+												"max_downspeed": "40.00",
+												"range_b_downstream_handback_threshold": null,
+												"range_a_downstream_handback_threshold": null,
+												"range_a_bottom_downstream": "40.00",
+												"range_a_top_downstream": "40.00",
+												"throughput_percentage": "100.00",
+												"estimated_download_range": "40.00",
+												"range_a_top_upstream": "10.00"
+											}
+										},
+										"BT_21CN_FTTC": {
+											"PLUS": {
+												"max_downspeed": "80.00",
+												"range_b_downstream_handback_threshold": "77.60",
+												"range_a_downstream_handback_threshold": "78.00",
+												"range_a_bottom_downstream": "79.00",
+												"range_a_top_downstream": "80.00",
+												"throughput_percentage": "100.00",
+												"estimated_download_range": "79.00 - 80.00",
+												"range_a_top_upstream": "20.00",
+												"range_b_bottom_upstream": "19.00",
+												"range_b_bottom_downstream": "79.00",
+												"range_a_bottom_upstream": "19.00",
+												"minimum_guaranteed_speed": "78.00",
+												"range_b_top_upstream": "20.00",
+												"range_b_top_downstream": "80.00",
+												"max_upspeed": "20.00",
+												"estimated_upload_range": "19.00 - 20.00"
+											},
+											"STANDARD": {
+												"estimated_download_range": "40.00",
+												"range_a_top_upstream": "10.00",
+												"range_a_top_downstream": "40.00",
+												"throughput_percentage": "100.00",
+												"range_a_downstream_handback_threshold": "40.00",
+												"range_b_downstream_handback_threshold": "40.00",
+												"range_a_bottom_downstream": "40.00",
+												"max_downspeed": "40.00",
+												"estimated_upload_range": "10.00",
+												"range_b_top_upstream": "10.00",
+												"range_b_top_downstream": "40.00",
+												"max_upspeed": "10.00",
+												"minimum_guaranteed_speed": "40.00",
+												"range_b_bottom_upstream": "10.00",
+												"range_b_bottom_downstream": "40.00",
+												"range_a_bottom_upstream": "10.00"
+											}
+										}
+									},
+									"Residential": {
+										"BT_21CN_FTTC": {
+											"PLUS": {
+												"range_b_top_downstream": "76.00",
+												"max_upspeed": "20.00",
+												"range_b_top_upstream": "19.00",
+												"estimated_upload_range": "18.05 - 19.00",
+												"range_b_bottom_downstream": "75.05",
+												"range_a_bottom_upstream": "18.05",
+												"range_b_bottom_upstream": "18.05",
+												"minimum_guaranteed_speed": "74.10",
+												"throughput_percentage": "95.00",
+												"range_a_top_downstream": "76.00",
+												"range_a_top_upstream": "19.00",
+												"estimated_download_range": "75.05 - 76.00",
+												"max_downspeed": "80.00",
+												"range_b_downstream_handback_threshold": "73.72",
+												"range_a_downstream_handback_threshold": "74.10",
+												"range_a_bottom_downstream": "75.05"
+											},
+											"STANDARD": {
+												"range_b_bottom_upstream": "9.50",
+												"range_a_bottom_upstream": "9.50",
+												"range_b_bottom_downstream": "38.00",
+												"minimum_guaranteed_speed": "38.00",
+												"range_b_top_upstream": "9.50",
+												"max_upspeed": "10.00",
+												"range_b_top_downstream": "38.00",
+												"estimated_upload_range": "9.50",
+												"max_downspeed": "40.00",
+												"range_a_bottom_downstream": "38.00",
+												"range_a_downstream_handback_threshold": "38.00",
+												"range_b_downstream_handback_threshold": "38.00",
+												"range_a_top_downstream": "38.00",
+												"throughput_percentage": "95.00",
+												"estimated_download_range": "38.00",
+												"range_a_top_upstream": "9.50"
+											}
+										},
+										"TTB_WLR_FTTC": {
+											"STANDARD": {
+												"estimated_download_range": "38.00",
+												"range_a_top_upstream": "9.50",
+												"range_a_top_downstream": "38.00",
+												"throughput_percentage": "95.00",
+												"range_b_downstream_handback_threshold": null,
+												"range_a_downstream_handback_threshold": null,
+												"range_a_bottom_downstream": "38.00",
+												"max_downspeed": "40.00",
+												"estimated_upload_range": "9.50",
+												"range_b_top_upstream": "9.50",
+												"range_b_top_downstream": "38.00",
+												"max_upspeed": "10.00",
+												"minimum_guaranteed_speed": "38.00",
+												"range_b_bottom_upstream": "9.50",
+												"range_b_bottom_downstream": "38.00",
+												"range_a_bottom_upstream": "9.50"
+											},
+											"PLUS": {
+												"range_a_bottom_upstream": "18.05",
+												"range_b_bottom_downstream": "75.05",
+												"range_b_bottom_upstream": "18.05",
+												"minimum_guaranteed_speed": "76.00",
+												"max_upspeed": "20.00",
+												"range_b_top_downstream": "76.00",
+												"range_b_top_upstream": "19.00",
+												"estimated_upload_range": "18.05 - 19.00",
+												"max_downspeed": "80.00",
+												"range_a_bottom_downstream": "75.05",
+												"range_a_downstream_handback_threshold": null,
+												"range_b_downstream_handback_threshold": null,
+												"throughput_percentage": "95.00",
+												"range_a_top_downstream": "76.00",
+												"range_a_top_upstream": "19.00",
+												"estimated_download_range": "75.05 - 76.00"
+											}
+										}
+									},
+									"Business": {
+										"BT_21CN_FTTC": {
+											"PLUS": {
+												"max_downspeed": "80.00",
+												"range_b_downstream_handback_threshold": "73.72",
+												"range_a_downstream_handback_threshold": "74.10",
+												"range_a_bottom_downstream": "75.05",
+												"throughput_percentage": "95.00",
+												"range_a_top_downstream": "76.00",
+												"range_a_top_upstream": "19.00",
+												"estimated_download_range": "75.05 - 76.00",
+												"range_b_bottom_downstream": "75.05",
+												"range_a_bottom_upstream": "18.05",
+												"range_b_bottom_upstream": "18.05",
+												"minimum_guaranteed_speed": "74.10",
+												"range_b_top_downstream": "76.00",
+												"max_upspeed": "20.00",
+												"range_b_top_upstream": "19.00",
+												"estimated_upload_range": "18.05 - 19.00"
+											},
+											"STANDARD": {
+												"range_a_top_downstream": "38.00",
+												"throughput_percentage": "95.00",
+												"estimated_download_range": "38.00",
+												"range_a_top_upstream": "9.50",
+												"max_downspeed": "40.00",
+												"range_a_bottom_downstream": "38.00",
+												"range_b_downstream_handback_threshold": "38.00",
+												"range_a_downstream_handback_threshold": "38.00",
+												"range_b_top_upstream": "9.50",
+												"max_upspeed": "10.00",
+												"range_b_top_downstream": "38.00",
+												"estimated_upload_range": "9.50",
+												"range_b_bottom_upstream": "9.50",
+												"range_a_bottom_upstream": "9.50",
+												"range_b_bottom_downstream": "38.00",
+												"minimum_guaranteed_speed": "38.00"
+											}
+										},
+										"TTB_WLR_FTTC": {
+											"STANDARD": {
+												"minimum_guaranteed_speed": "38.00",
+												"range_b_bottom_upstream": "9.50",
+												"range_a_bottom_upstream": "9.50",
+												"range_b_bottom_downstream": "38.00",
+												"estimated_upload_range": "9.50",
+												"range_b_top_upstream": "9.50",
+												"max_upspeed": "10.00",
+												"range_b_top_downstream": "38.00",
+												"range_a_bottom_downstream": "38.00",
+												"range_a_downstream_handback_threshold": null,
+												"range_b_downstream_handback_threshold": null,
+												"max_downspeed": "40.00",
+												"estimated_download_range": "38.00",
+												"range_a_top_upstream": "9.50",
+												"range_a_top_downstream": "38.00",
+												"throughput_percentage": "95.00"
+											},
+											"PLUS": {
+												"range_a_bottom_downstream": "75.05",
+												"range_a_downstream_handback_threshold": null,
+												"range_b_downstream_handback_threshold": null,
+												"max_downspeed": "80.00",
+												"estimated_download_range": "75.05 - 76.00",
+												"range_a_top_upstream": "19.00",
+												"range_a_top_downstream": "76.00",
+												"throughput_percentage": "95.00",
+												"minimum_guaranteed_speed": "76.00",
+												"range_b_bottom_upstream": "18.05",
+												"range_a_bottom_upstream": "18.05",
+												"range_b_bottom_downstream": "75.05",
+												"estimated_upload_range": "18.05 - 19.00",
+												"range_b_top_upstream": "19.00",
+												"max_upspeed": "20.00",
+												"range_b_top_downstream": "76.00"
+											}
+										}
+									}
+								},
+								"products": [],
+								"status": "success",
+								"original_query_params": {
+									"address_reference": "A12400537343",
+									"css_database_code": "NS",
+									"standard_lead_times": "1",
+									"no_realms": "1",
+									"has_broadband": "1",
+									"postcode": "HS43XU",
+									"category_id": "464",
+									"rates_in_mbps": "1"
+								},
+								"exchange_details": {
+									"exchange_state": "N",
+									"exchange_code": "NSSPY",
+									"cp_name": "",
+									"exchange_can_llu": "N",
+									"reason_code": "Z",
+									"exchange_name": "SCALPAY",
+									"cease_date": "",
+									"market_code": "A"
+								},
+								"ont_details": {
+									"ont_working_data_ports": null,
+									"tma_marker_present": "0",
+									"ont_type": "NEW",
+									"ont_floor": "",
+									"tma_permit_required": "0",
+									"ont_room": "",
+									"tma_marker": "",
+									"mdu_status": "",
+									"ont_reference": "",
+									"ont_port_list": null,
+									"tma_notice_or_permit": "",
+									"mdu_build_complete": "0",
+									"ont_position": "",
+									"tma_notice_required": "0",
+									"ont_minimum_lead_time": "",
+									"ont_spare_data_ports": null
+								},
+								"availability_check_id": "662819"
+							}
+						}
+					}
+				},
+				"security": [{
+					"DC Login": []
+				}]
+			}
+		},
 		"/WLR3/InstallationDetails": {
 			"get": {
 				"tags": ["WLR3"],
@@ -134,6 +554,1441 @@
 		}
 	},
 	"definitions": {
+		"OntDetails": {
+			"description": "Model for OntDetails",
+			"required": ["mdu_build_complete"],
+			"properties": {
+				"mdu_build_complete": {
+					"type": "string",
+					"x-example": "0"
+				},
+				"mdu_status": {
+					"type": "string",
+					"x-example": ""
+				},
+				"ont_floor": {
+					"type": "string",
+					"x-example": ""
+				},
+				"ont_minimum_lead_time": {
+					"type": "string",
+					"x-example": ""
+				},
+				"ont_port_list": {
+					"type": "string",
+					"x-example": ""
+				},
+				"ont_position": {
+					"type": "string",
+					"x-example": ""
+				},
+				"ont_reference": {
+					"type": "string",
+					"x-example": ""
+				},
+				"ont_room": {
+					"type": "string",
+					"x-example": ""
+				},
+				"ont_spare_data_ports": {
+					"type": "string",
+					"x-example": ""
+				},
+				"ont_type": {
+					"type": "string",
+					"x-example": "NEW"
+				},
+				"ont_working_data_ports": {
+					"type": "string",
+					"x-example": ""
+				},
+				"tma_marker": {
+					"type": "string",
+					"x-example": ""
+				},
+				"tma_marker_present": {
+					"type": "string",
+					"x-example": "0"
+				},
+				"tma_notice_or_permit": {
+					"type": "string",
+					"x-example": ""
+				},
+				"tma_notice_required": {
+					"type": "string",
+					"x-example": "0"
+				},
+				"tma_permit_required": {
+					"type": "string",
+					"x-example": "0"
+				}
+			}
+		},
+		"BroadbandSearch": {
+			"description": "Model for BroadbandSearch",
+			"required": ["availability_check_id"],
+			"properties": {
+				"availability_check_id": {
+					"type": "string",
+					"x-example": "662819"
+				},
+				"broadband_rates": {
+					"$ref": "#/definitions/BroadbandRates",
+					"x-example": "{\n  \"None\": {\n    \"TTB_WLR_FTTC\": {\n      \"PLUS\": {\n        \"range_a_top_upstream\": \"20.00\",\n        \"estimated_download_range\": \"79.00 - 80.00\",\n        \"throughput_percentage\": \"100.00\",\n        \"range_a_top_downstream\": \"80.00\",\n        \"range_a_bottom_downstream\": \"79.00\",\n        \"range_b_downstream_handback_threshold\": null,\n        \"range_a_downstream_handback_threshold\": null,\n        \"max_downspeed\": \"80.00\",\n        \"estimated_upload_range\": \"19.00 - 20.00\",\n        \"max_upspeed\": \"20.00\",\n        \"range_b_top_downstream\": \"80.00\",\n        \"range_b_top_upstream\": \"20.00\",\n        \"minimum_guaranteed_speed\": \"80.00\",\n        \"range_a_bottom_upstream\": \"19.00\",\n        \"range_b_bottom_downstream\": \"79.00\",\n        \"range_b_bottom_upstream\": \"19.00\"\n      },\n      \"STANDARD\": {\n        \"range_b_bottom_upstream\": \"10.00\",\n        \"range_b_bottom_downstream\": \"40.00\",\n        \"range_a_bottom_upstream\": \"10.00\",\n        \"minimum_guaranteed_speed\": \"40.00\",\n        \"range_b_top_upstream\": \"10.00\",\n        \"range_b_top_downstream\": \"40.00\",\n        \"max_upspeed\": \"10.00\",\n        \"estimated_upload_range\": \"10.00\",\n        \"max_downspeed\": \"40.00\",\n        \"range_b_downstream_handback_threshold\": null,\n        \"range_a_downstream_handback_threshold\": null,\n        \"range_a_bottom_downstream\": \"40.00\",\n        \"range_a_top_downstream\": \"40.00\",\n        \"throughput_percentage\": \"100.00\",\n        \"estimated_download_range\": \"40.00\",\n        \"range_a_top_upstream\": \"10.00\"\n      }\n    },\n    \"BT_21CN_FTTC\": {\n      \"PLUS\": {\n        \"max_downspeed\": \"80.00\",\n        \"range_b_downstream_handback_threshold\": \"77.60\",\n        \"range_a_downstream_handback_threshold\": \"78.00\",\n        \"range_a_bottom_downstream\": \"79.00\",\n        \"range_a_top_downstream\": \"80.00\",\n        \"throughput_percentage\": \"100.00\",\n        \"estimated_download_range\": \"79.00 - 80.00\",\n        \"range_a_top_upstream\": \"20.00\",\n        \"range_b_bottom_upstream\": \"19.00\",\n        \"range_b_bottom_downstream\": \"79.00\",\n        \"range_a_bottom_upstream\": \"19.00\",\n        \"minimum_guaranteed_speed\": \"78.00\",\n        \"range_b_top_upstream\": \"20.00\",\n        \"range_b_top_downstream\": \"80.00\",\n        \"max_upspeed\": \"20.00\",\n        \"estimated_upload_range\": \"19.00 - 20.00\"\n      },\n      \"STANDARD\": {\n        \"estimated_download_range\": \"40.00\",\n        \"range_a_top_upstream\": \"10.00\",\n        \"range_a_top_downstream\": \"40.00\",\n        \"throughput_percentage\": \"100.00\",\n        \"range_a_downstream_handback_threshold\": \"40.00\",\n        \"range_b_downstream_handback_threshold\": \"40.00\",\n        \"range_a_bottom_downstream\": \"40.00\",\n        \"max_downspeed\": \"40.00\",\n        \"estimated_upload_range\": \"10.00\",\n        \"range_b_top_upstream\": \"10.00\",\n        \"range_b_top_downstream\": \"40.00\",\n        \"max_upspeed\": \"10.00\",\n        \"minimum_guaranteed_speed\": \"40.00\",\n        \"range_b_bottom_upstream\": \"10.00\",\n        \"range_b_bottom_downstream\": \"40.00\",\n        \"range_a_bottom_upstream\": \"10.00\"\n      }\n    }\n  },\n  \"Residential\": {\n    \"BT_21CN_FTTC\": {\n      \"PLUS\": {\n        \"range_b_top_downstream\": \"76.00\",\n        \"max_upspeed\": \"20.00\",\n        \"range_b_top_upstream\": \"19.00\",\n        \"estimated_upload_range\": \"18.05 - 19.00\",\n        \"range_b_bottom_downstream\": \"75.05\",\n        \"range_a_bottom_upstream\": \"18.05\",\n        \"range_b_bottom_upstream\": \"18.05\",\n        \"minimum_guaranteed_speed\": \"74.10\",\n        \"throughput_percentage\": \"95.00\",\n        \"range_a_top_downstream\": \"76.00\",\n        \"range_a_top_upstream\": \"19.00\",\n        \"estimated_download_range\": \"75.05 - 76.00\",\n        \"max_downspeed\": \"80.00\",\n        \"range_b_downstream_handback_threshold\": \"73.72\",\n        \"range_a_downstream_handback_threshold\": \"74.10\",\n        \"range_a_bottom_downstream\": \"75.05\"\n      },\n      \"STANDARD\": {\n        \"range_b_bottom_upstream\": \"9.50\",\n        \"range_a_bottom_upstream\": \"9.50\",\n        \"range_b_bottom_downstream\": \"38.00\",\n        \"minimum_guaranteed_speed\": \"38.00\",\n        \"range_b_top_upstream\": \"9.50\",\n        \"max_upspeed\": \"10.00\",\n        \"range_b_top_downstream\": \"38.00\",\n        \"estimated_upload_range\": \"9.50\",\n        \"max_downspeed\": \"40.00\",\n        \"range_a_bottom_downstream\": \"38.00\",\n        \"range_a_downstream_handback_threshold\": \"38.00\",\n        \"range_b_downstream_handback_threshold\": \"38.00\",\n        \"range_a_top_downstream\": \"38.00\",\n        \"throughput_percentage\": \"95.00\",\n        \"estimated_download_range\": \"38.00\",\n        \"range_a_top_upstream\": \"9.50\"\n      }\n    },\n    \"TTB_WLR_FTTC\": {\n      \"STANDARD\": {\n        \"estimated_download_range\": \"38.00\",\n        \"range_a_top_upstream\": \"9.50\",\n        \"range_a_top_downstream\": \"38.00\",\n        \"throughput_percentage\": \"95.00\",\n        \"range_b_downstream_handback_threshold\": null,\n        \"range_a_downstream_handback_threshold\": null,\n        \"range_a_bottom_downstream\": \"38.00\",\n        \"max_downspeed\": \"40.00\",\n        \"estimated_upload_range\": \"9.50\",\n        \"range_b_top_upstream\": \"9.50\",\n        \"range_b_top_downstream\": \"38.00\",\n        \"max_upspeed\": \"10.00\",\n        \"minimum_guaranteed_speed\": \"38.00\",\n        \"range_b_bottom_upstream\": \"9.50\",\n        \"range_b_bottom_downstream\": \"38.00\",\n        \"range_a_bottom_upstream\": \"9.50\"\n      },\n      \"PLUS\": {\n        \"range_a_bottom_upstream\": \"18.05\",\n        \"range_b_bottom_downstream\": \"75.05\",\n        \"range_b_bottom_upstream\": \"18.05\",\n        \"minimum_guaranteed_speed\": \"76.00\",\n        \"max_upspeed\": \"20.00\",\n        \"range_b_top_downstream\": \"76.00\",\n        \"range_b_top_upstream\": \"19.00\",\n        \"estimated_upload_range\": \"18.05 - 19.00\",\n        \"max_downspeed\": \"80.00\",\n        \"range_a_bottom_downstream\": \"75.05\",\n        \"range_a_downstream_handback_threshold\": null,\n        \"range_b_downstream_handback_threshold\": null,\n        \"throughput_percentage\": \"95.00\",\n        \"range_a_top_downstream\": \"76.00\",\n        \"range_a_top_upstream\": \"19.00\",\n        \"estimated_download_range\": \"75.05 - 76.00\"\n      }\n    }\n  },\n  \"Business\": {\n    \"BT_21CN_FTTC\": {\n      \"PLUS\": {\n        \"max_downspeed\": \"80.00\",\n        \"range_b_downstream_handback_threshold\": \"73.72\",\n        \"range_a_downstream_handback_threshold\": \"74.10\",\n        \"range_a_bottom_downstream\": \"75.05\",\n        \"throughput_percentage\": \"95.00\",\n        \"range_a_top_downstream\": \"76.00\",\n        \"range_a_top_upstream\": \"19.00\",\n        \"estimated_download_range\": \"75.05 - 76.00\",\n        \"range_b_bottom_downstream\": \"75.05\",\n        \"range_a_bottom_upstream\": \"18.05\",\n        \"range_b_bottom_upstream\": \"18.05\",\n        \"minimum_guaranteed_speed\": \"74.10\",\n        \"range_b_top_downstream\": \"76.00\",\n        \"max_upspeed\": \"20.00\",\n        \"range_b_top_upstream\": \"19.00\",\n        \"estimated_upload_range\": \"18.05 - 19.00\"\n      },\n      \"STANDARD\": {\n        \"range_a_top_downstream\": \"38.00\",\n        \"throughput_percentage\": \"95.00\",\n        \"estimated_download_range\": \"38.00\",\n        \"range_a_top_upstream\": \"9.50\",\n        \"max_downspeed\": \"40.00\",\n        \"range_a_bottom_downstream\": \"38.00\",\n        \"range_b_downstream_handback_threshold\": \"38.00\",\n        \"range_a_downstream_handback_threshold\": \"38.00\",\n        \"range_b_top_upstream\": \"9.50\",\n        \"max_upspeed\": \"10.00\",\n        \"range_b_top_downstream\": \"38.00\",\n        \"estimated_upload_range\": \"9.50\",\n        \"range_b_bottom_upstream\": \"9.50\",\n        \"range_a_bottom_upstream\": \"9.50\",\n        \"range_b_bottom_downstream\": \"38.00\",\n        \"minimum_guaranteed_speed\": \"38.00\"\n      }\n    },\n    \"TTB_WLR_FTTC\": {\n      \"STANDARD\": {\n        \"minimum_guaranteed_speed\": \"38.00\",\n        \"range_b_bottom_upstream\": \"9.50\",\n        \"range_a_bottom_upstream\": \"9.50\",\n        \"range_b_bottom_downstream\": \"38.00\",\n        \"estimated_upload_range\": \"9.50\",\n        \"range_b_top_upstream\": \"9.50\",\n        \"max_upspeed\": \"10.00\",\n        \"range_b_top_downstream\": \"38.00\",\n        \"range_a_bottom_downstream\": \"38.00\",\n        \"range_a_downstream_handback_threshold\": null,\n        \"range_b_downstream_handback_threshold\": null,\n        \"max_downspeed\": \"40.00\",\n        \"estimated_download_range\": \"38.00\",\n        \"range_a_top_upstream\": \"9.50\",\n        \"range_a_top_downstream\": \"38.00\",\n        \"throughput_percentage\": \"95.00\"\n      },\n      \"PLUS\": {\n        \"range_a_bottom_downstream\": \"75.05\",\n        \"range_a_downstream_handback_threshold\": null,\n        \"range_b_downstream_handback_threshold\": null,\n        \"max_downspeed\": \"80.00\",\n        \"estimated_download_range\": \"75.05 - 76.00\",\n        \"range_a_top_upstream\": \"19.00\",\n        \"range_a_top_downstream\": \"76.00\",\n        \"throughput_percentage\": \"95.00\",\n        \"minimum_guaranteed_speed\": \"76.00\",\n        \"range_b_bottom_upstream\": \"18.05\",\n        \"range_a_bottom_upstream\": \"18.05\",\n        \"range_b_bottom_downstream\": \"75.05\",\n        \"estimated_upload_range\": \"18.05 - 19.00\",\n        \"range_b_top_upstream\": \"19.00\",\n        \"max_upspeed\": \"20.00\",\n        \"range_b_top_downstream\": \"76.00\"\n      }\n    }\n  }\n}"
+				},
+				"exchange_details": {
+					"$ref": "#/definitions/ExchangeDetails",
+					"x-example": "{\n  \"exchange_state\": \"N\",\n  \"exchange_code\": \"NSSPY\",\n  \"cp_name\": \"\",\n  \"exchange_can_llu\": \"N\",\n  \"reason_code\": \"Z\",\n  \"exchange_name\": \"SCALPAY\",\n  \"cease_date\": \"\",\n  \"market_code\": \"A\"\n}"
+				},
+				"mpf_response_details": {
+					"$ref": "#/definitions/MpfResponseDetails",
+					"x-example": "{\n  \"mpf_available\": 0,\n  \"error_message\": null\n}"
+				},
+				"ont_details": {
+					"$ref": "#/definitions/OntDetails",
+					"x-example": "{\n  \"ont_working_data_ports\": null,\n  \"tma_marker_present\": \"0\",\n  \"ont_type\": \"NEW\",\n  \"ont_floor\": \"\",\n  \"tma_permit_required\": \"0\",\n  \"ont_room\": \"\",\n  \"tma_marker\": \"\",\n  \"mdu_status\": \"\",\n  \"ont_reference\": \"\",\n  \"ont_port_list\": null,\n  \"tma_notice_or_permit\": \"\",\n  \"mdu_build_complete\": \"0\",\n  \"ont_position\": \"\",\n  \"tma_notice_required\": \"0\",\n  \"ont_minimum_lead_time\": \"\",\n  \"ont_spare_data_ports\": null\n}"
+				},
+				"original_query_params": {
+					"$ref": "#/definitions/OriginalQueryParams",
+					"x-example": "{\n  \"address_reference\": \"A12400537343\",\n  \"css_database_code\": \"NS\",\n  \"standard_lead_times\": \"1\",\n  \"no_realms\": \"1\",\n  \"has_broadband\": \"1\",\n  \"postcode\": \"HS43XU\",\n  \"category_id\": \"464\",\n  \"rates_in_mbps\": \"1\"\n}"
+				},
+				"products": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"x-example": "[]"
+				},
+				"status": {
+					"type": "string",
+					"x-example": "success"
+				},
+				"tags_response_details": {
+					"$ref": "#/definitions/TagsResponseDetails",
+					"x-example": "{\n  \"tags_values\": {\n    \"fttc_gfast\": {\n      \"range_b_top_upstream\": \"\",\n      \"range_a_top_downstream\": \"\",\n      \"rate_adaptive\": \"\",\n      \"range_b_top_downstream\": \"\",\n      \"range_a_top_upstream\": \"\",\n      \"range_b_bottom_upstream\": \"\",\n      \"range_a_bottom_upstream\": \"\",\n      \"range_b_bottom_downstream\": \"\",\n      \"range_a_bottom_downstream\": \"\",\n      \"range_a_downstream_handback_threshold\": \"\",\n      \"range_b_downstream_handback_threshold\": \"\"\n    },\n    \"plus\": {\n      \"rate_adaptive\": \"\",\n      \"min_range\": \"\",\n      \"max_speed\": \"\",\n      \"max_range\": \"\",\n      \"annexm\": {\n        \"rate_adaptive\": \"\",\n        \"min_range\": \"\",\n        \"max_speed_down\": \"\",\n        \"max_speed_up\": \"\",\n        \"max_range\": \"\"\n      }\n    },\n    \"fttc\": {\n      \"range_a_bottom_downstream\": \"79000\",\n      \"range_b_downstream_handback_threshold\": \"77600\",\n      \"range_a_downstream_handback_threshold\": \"78000\",\n      \"range_a_bottom_upstream\": \"19000\",\n      \"range_b_bottom_downstream\": \"79000\",\n      \"range_b_bottom_upstream\": \"19000\",\n      \"range_a_top_upstream\": \"20000\",\n      \"rate_adaptive\": \"G\",\n      \"range_b_top_downstream\": \"80000\",\n      \"range_b_top_upstream\": \"20000\",\n      \"range_a_top_downstream\": \"80000\"\n    },\n    \"max\": {\n      \"max_speed\": \"\",\n      \"max_range\": \"\",\n      \"min_range\": \"\",\n      \"rate_adaptive\": \"\"\n    },\n    \"classic\": {\n      \"reason_code\": \"Z\",\n      \"rate_adaptive\": \"G\",\n      \"max_speed\": \"\",\n      \"fixed_rate\": \"G\"\n    }\n  },\n  \"postcode\": \"HS4 3XU\",\n  \"error_code\": \"0\"\n}"
+				},
+				"total": {
+					"type": "integer",
+					"format": "int32",
+					"x-example": "0"
+				}
+			}
+		},
+		"ExchangeDetails": {
+			"description": "Model for ExchangeDetails",
+			"required": ["cease_date"],
+			"properties": {
+				"cease_date": {
+					"type": "string",
+					"x-example": ""
+				},
+				"cp_name": {
+					"type": "string",
+					"x-example": ""
+				},
+				"exchange_can_llu": {
+					"type": "string",
+					"x-example": "N"
+				},
+				"exchange_code": {
+					"type": "string",
+					"x-example": "NSSPY"
+				},
+				"exchange_name": {
+					"type": "string",
+					"x-example": "SCALPAY"
+				},
+				"exchange_state": {
+					"type": "string",
+					"x-example": "N"
+				},
+				"market_code": {
+					"type": "string",
+					"x-example": "A"
+				},
+				"reason_code": {
+					"type": "string",
+					"x-example": "Z"
+				}
+			}
+		},
+		"OriginalQueryParams": {
+			"description": "Model for OriginalQueryParams",
+			"required": ["address_reference"],
+			"properties": {
+				"address_reference": {
+					"type": "string",
+					"x-example": "A12400537343"
+				},
+				"category_id": {
+					"type": "string",
+					"x-example": "464"
+				},
+				"css_database_code": {
+					"type": "string",
+					"x-example": "NS"
+				},
+				"has_broadband": {
+					"type": "string",
+					"x-example": "1"
+				},
+				"no_realms": {
+					"type": "string",
+					"x-example": "1"
+				},
+				"postcode": {
+					"type": "string",
+					"x-example": "HS43XU"
+				},
+				"rates_in_mbps": {
+					"type": "string",
+					"x-example": "1"
+				},
+				"standard_lead_times": {
+					"type": "string",
+					"x-example": "1"
+				}
+			}
+		},
+		"BroadbandRates": {
+			"description": "Model for BroadbandRates",
+			"required": ["Business"],
+			"properties": {
+				"Business": {
+					"$ref": "#/definitions/Business",
+					"x-example": "{\n  \"BT_21CN_FTTC\": {\n    \"PLUS\": {\n      \"max_downspeed\": \"80.00\",\n      \"range_b_downstream_handback_threshold\": \"73.72\",\n      \"range_a_downstream_handback_threshold\": \"74.10\",\n      \"range_a_bottom_downstream\": \"75.05\",\n      \"throughput_percentage\": \"95.00\",\n      \"range_a_top_downstream\": \"76.00\",\n      \"range_a_top_upstream\": \"19.00\",\n      \"estimated_download_range\": \"75.05 - 76.00\",\n      \"range_b_bottom_downstream\": \"75.05\",\n      \"range_a_bottom_upstream\": \"18.05\",\n      \"range_b_bottom_upstream\": \"18.05\",\n      \"minimum_guaranteed_speed\": \"74.10\",\n      \"range_b_top_downstream\": \"76.00\",\n      \"max_upspeed\": \"20.00\",\n      \"range_b_top_upstream\": \"19.00\",\n      \"estimated_upload_range\": \"18.05 - 19.00\"\n    },\n    \"STANDARD\": {\n      \"range_a_top_downstream\": \"38.00\",\n      \"throughput_percentage\": \"95.00\",\n      \"estimated_download_range\": \"38.00\",\n      \"range_a_top_upstream\": \"9.50\",\n      \"max_downspeed\": \"40.00\",\n      \"range_a_bottom_downstream\": \"38.00\",\n      \"range_b_downstream_handback_threshold\": \"38.00\",\n      \"range_a_downstream_handback_threshold\": \"38.00\",\n      \"range_b_top_upstream\": \"9.50\",\n      \"max_upspeed\": \"10.00\",\n      \"range_b_top_downstream\": \"38.00\",\n      \"estimated_upload_range\": \"9.50\",\n      \"range_b_bottom_upstream\": \"9.50\",\n      \"range_a_bottom_upstream\": \"9.50\",\n      \"range_b_bottom_downstream\": \"38.00\",\n      \"minimum_guaranteed_speed\": \"38.00\"\n    }\n  },\n  \"TTB_WLR_FTTC\": {\n    \"STANDARD\": {\n      \"minimum_guaranteed_speed\": \"38.00\",\n      \"range_b_bottom_upstream\": \"9.50\",\n      \"range_a_bottom_upstream\": \"9.50\",\n      \"range_b_bottom_downstream\": \"38.00\",\n      \"estimated_upload_range\": \"9.50\",\n      \"range_b_top_upstream\": \"9.50\",\n      \"max_upspeed\": \"10.00\",\n      \"range_b_top_downstream\": \"38.00\",\n      \"range_a_bottom_downstream\": \"38.00\",\n      \"range_a_downstream_handback_threshold\": null,\n      \"range_b_downstream_handback_threshold\": null,\n      \"max_downspeed\": \"40.00\",\n      \"estimated_download_range\": \"38.00\",\n      \"range_a_top_upstream\": \"9.50\",\n      \"range_a_top_downstream\": \"38.00\",\n      \"throughput_percentage\": \"95.00\"\n    },\n    \"PLUS\": {\n      \"range_a_bottom_downstream\": \"75.05\",\n      \"range_a_downstream_handback_threshold\": null,\n      \"range_b_downstream_handback_threshold\": null,\n      \"max_downspeed\": \"80.00\",\n      \"estimated_download_range\": \"75.05 - 76.00\",\n      \"range_a_top_upstream\": \"19.00\",\n      \"range_a_top_downstream\": \"76.00\",\n      \"throughput_percentage\": \"95.00\",\n      \"minimum_guaranteed_speed\": \"76.00\",\n      \"range_b_bottom_upstream\": \"18.05\",\n      \"range_a_bottom_upstream\": \"18.05\",\n      \"range_b_bottom_downstream\": \"75.05\",\n      \"estimated_upload_range\": \"18.05 - 19.00\",\n      \"range_b_top_upstream\": \"19.00\",\n      \"max_upspeed\": \"20.00\",\n      \"range_b_top_downstream\": \"76.00\"\n    }\n  }\n}"
+				},
+				"None": {
+					"$ref": "#/definitions/None",
+					"x-example": "{\n  \"TTB_WLR_FTTC\": {\n    \"PLUS\": {\n      \"range_a_top_upstream\": \"20.00\",\n      \"estimated_download_range\": \"79.00 - 80.00\",\n      \"throughput_percentage\": \"100.00\",\n      \"range_a_top_downstream\": \"80.00\",\n      \"range_a_bottom_downstream\": \"79.00\",\n      \"range_b_downstream_handback_threshold\": null,\n      \"range_a_downstream_handback_threshold\": null,\n      \"max_downspeed\": \"80.00\",\n      \"estimated_upload_range\": \"19.00 - 20.00\",\n      \"max_upspeed\": \"20.00\",\n      \"range_b_top_downstream\": \"80.00\",\n      \"range_b_top_upstream\": \"20.00\",\n      \"minimum_guaranteed_speed\": \"80.00\",\n      \"range_a_bottom_upstream\": \"19.00\",\n      \"range_b_bottom_downstream\": \"79.00\",\n      \"range_b_bottom_upstream\": \"19.00\"\n    },\n    \"STANDARD\": {\n      \"range_b_bottom_upstream\": \"10.00\",\n      \"range_b_bottom_downstream\": \"40.00\",\n      \"range_a_bottom_upstream\": \"10.00\",\n      \"minimum_guaranteed_speed\": \"40.00\",\n      \"range_b_top_upstream\": \"10.00\",\n      \"range_b_top_downstream\": \"40.00\",\n      \"max_upspeed\": \"10.00\",\n      \"estimated_upload_range\": \"10.00\",\n      \"max_downspeed\": \"40.00\",\n      \"range_b_downstream_handback_threshold\": null,\n      \"range_a_downstream_handback_threshold\": null,\n      \"range_a_bottom_downstream\": \"40.00\",\n      \"range_a_top_downstream\": \"40.00\",\n      \"throughput_percentage\": \"100.00\",\n      \"estimated_download_range\": \"40.00\",\n      \"range_a_top_upstream\": \"10.00\"\n    }\n  },\n  \"BT_21CN_FTTC\": {\n    \"PLUS\": {\n      \"max_downspeed\": \"80.00\",\n      \"range_b_downstream_handback_threshold\": \"77.60\",\n      \"range_a_downstream_handback_threshold\": \"78.00\",\n      \"range_a_bottom_downstream\": \"79.00\",\n      \"range_a_top_downstream\": \"80.00\",\n      \"throughput_percentage\": \"100.00\",\n      \"estimated_download_range\": \"79.00 - 80.00\",\n      \"range_a_top_upstream\": \"20.00\",\n      \"range_b_bottom_upstream\": \"19.00\",\n      \"range_b_bottom_downstream\": \"79.00\",\n      \"range_a_bottom_upstream\": \"19.00\",\n      \"minimum_guaranteed_speed\": \"78.00\",\n      \"range_b_top_upstream\": \"20.00\",\n      \"range_b_top_downstream\": \"80.00\",\n      \"max_upspeed\": \"20.00\",\n      \"estimated_upload_range\": \"19.00 - 20.00\"\n    },\n    \"STANDARD\": {\n      \"estimated_download_range\": \"40.00\",\n      \"range_a_top_upstream\": \"10.00\",\n      \"range_a_top_downstream\": \"40.00\",\n      \"throughput_percentage\": \"100.00\",\n      \"range_a_downstream_handback_threshold\": \"40.00\",\n      \"range_b_downstream_handback_threshold\": \"40.00\",\n      \"range_a_bottom_downstream\": \"40.00\",\n      \"max_downspeed\": \"40.00\",\n      \"estimated_upload_range\": \"10.00\",\n      \"range_b_top_upstream\": \"10.00\",\n      \"range_b_top_downstream\": \"40.00\",\n      \"max_upspeed\": \"10.00\",\n      \"minimum_guaranteed_speed\": \"40.00\",\n      \"range_b_bottom_upstream\": \"10.00\",\n      \"range_b_bottom_downstream\": \"40.00\",\n      \"range_a_bottom_upstream\": \"10.00\"\n    }\n  }\n}"
+				},
+				"Residential": {
+					"$ref": "#/definitions/Residential",
+					"x-example": "{\n  \"BT_21CN_FTTC\": {\n    \"PLUS\": {\n      \"range_b_top_downstream\": \"76.00\",\n      \"max_upspeed\": \"20.00\",\n      \"range_b_top_upstream\": \"19.00\",\n      \"estimated_upload_range\": \"18.05 - 19.00\",\n      \"range_b_bottom_downstream\": \"75.05\",\n      \"range_a_bottom_upstream\": \"18.05\",\n      \"range_b_bottom_upstream\": \"18.05\",\n      \"minimum_guaranteed_speed\": \"74.10\",\n      \"throughput_percentage\": \"95.00\",\n      \"range_a_top_downstream\": \"76.00\",\n      \"range_a_top_upstream\": \"19.00\",\n      \"estimated_download_range\": \"75.05 - 76.00\",\n      \"max_downspeed\": \"80.00\",\n      \"range_b_downstream_handback_threshold\": \"73.72\",\n      \"range_a_downstream_handback_threshold\": \"74.10\",\n      \"range_a_bottom_downstream\": \"75.05\"\n    },\n    \"STANDARD\": {\n      \"range_b_bottom_upstream\": \"9.50\",\n      \"range_a_bottom_upstream\": \"9.50\",\n      \"range_b_bottom_downstream\": \"38.00\",\n      \"minimum_guaranteed_speed\": \"38.00\",\n      \"range_b_top_upstream\": \"9.50\",\n      \"max_upspeed\": \"10.00\",\n      \"range_b_top_downstream\": \"38.00\",\n      \"estimated_upload_range\": \"9.50\",\n      \"max_downspeed\": \"40.00\",\n      \"range_a_bottom_downstream\": \"38.00\",\n      \"range_a_downstream_handback_threshold\": \"38.00\",\n      \"range_b_downstream_handback_threshold\": \"38.00\",\n      \"range_a_top_downstream\": \"38.00\",\n      \"throughput_percentage\": \"95.00\",\n      \"estimated_download_range\": \"38.00\",\n      \"range_a_top_upstream\": \"9.50\"\n    }\n  },\n  \"TTB_WLR_FTTC\": {\n    \"STANDARD\": {\n      \"estimated_download_range\": \"38.00\",\n      \"range_a_top_upstream\": \"9.50\",\n      \"range_a_top_downstream\": \"38.00\",\n      \"throughput_percentage\": \"95.00\",\n      \"range_b_downstream_handback_threshold\": null,\n      \"range_a_downstream_handback_threshold\": null,\n      \"range_a_bottom_downstream\": \"38.00\",\n      \"max_downspeed\": \"40.00\",\n      \"estimated_upload_range\": \"9.50\",\n      \"range_b_top_upstream\": \"9.50\",\n      \"range_b_top_downstream\": \"38.00\",\n      \"max_upspeed\": \"10.00\",\n      \"minimum_guaranteed_speed\": \"38.00\",\n      \"range_b_bottom_upstream\": \"9.50\",\n      \"range_b_bottom_downstream\": \"38.00\",\n      \"range_a_bottom_upstream\": \"9.50\"\n    },\n    \"PLUS\": {\n      \"range_a_bottom_upstream\": \"18.05\",\n      \"range_b_bottom_downstream\": \"75.05\",\n      \"range_b_bottom_upstream\": \"18.05\",\n      \"minimum_guaranteed_speed\": \"76.00\",\n      \"max_upspeed\": \"20.00\",\n      \"range_b_top_downstream\": \"76.00\",\n      \"range_b_top_upstream\": \"19.00\",\n      \"estimated_upload_range\": \"18.05 - 19.00\",\n      \"max_downspeed\": \"80.00\",\n      \"range_a_bottom_downstream\": \"75.05\",\n      \"range_a_downstream_handback_threshold\": null,\n      \"range_b_downstream_handback_threshold\": null,\n      \"throughput_percentage\": \"95.00\",\n      \"range_a_top_downstream\": \"76.00\",\n      \"range_a_top_upstream\": \"19.00\",\n      \"estimated_download_range\": \"75.05 - 76.00\"\n    }\n  }\n}"
+				}
+			}
+		},
+		"TtbWlrFttc3": {
+			"description": "Model for TtbWlrFttc3",
+			"required": ["PLUS"],
+			"properties": {
+				"PLUS": {
+					"$ref": "#/definitions/Plus7",
+					"x-example": "{\n  \"range_a_bottom_downstream\": \"75.05\",\n  \"range_a_downstream_handback_threshold\": null,\n  \"range_b_downstream_handback_threshold\": null,\n  \"max_downspeed\": \"80.00\",\n  \"estimated_download_range\": \"75.05 - 76.00\",\n  \"range_a_top_upstream\": \"19.00\",\n  \"range_a_top_downstream\": \"76.00\",\n  \"throughput_percentage\": \"95.00\",\n  \"minimum_guaranteed_speed\": \"76.00\",\n  \"range_b_bottom_upstream\": \"18.05\",\n  \"range_a_bottom_upstream\": \"18.05\",\n  \"range_b_bottom_downstream\": \"75.05\",\n  \"estimated_upload_range\": \"18.05 - 19.00\",\n  \"range_b_top_upstream\": \"19.00\",\n  \"max_upspeed\": \"20.00\",\n  \"range_b_top_downstream\": \"76.00\"\n}"
+				},
+				"STANDARD": {
+					"$ref": "#/definitions/Standard6",
+					"x-example": "{\n  \"minimum_guaranteed_speed\": \"38.00\",\n  \"range_b_bottom_upstream\": \"9.50\",\n  \"range_a_bottom_upstream\": \"9.50\",\n  \"range_b_bottom_downstream\": \"38.00\",\n  \"estimated_upload_range\": \"9.50\",\n  \"range_b_top_upstream\": \"9.50\",\n  \"max_upspeed\": \"10.00\",\n  \"range_b_top_downstream\": \"38.00\",\n  \"range_a_bottom_downstream\": \"38.00\",\n  \"range_a_downstream_handback_threshold\": null,\n  \"range_b_downstream_handback_threshold\": null,\n  \"max_downspeed\": \"40.00\",\n  \"estimated_download_range\": \"38.00\",\n  \"range_a_top_upstream\": \"9.50\",\n  \"range_a_top_downstream\": \"38.00\",\n  \"throughput_percentage\": \"95.00\"\n}"
+				}
+			}
+		},
+		"Plus7": {
+			"description": "Model for Plus7",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "75.05 - 76.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "18.05 - 19.00"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "80.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "20.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "76.00"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "75.05"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "18.05"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "76.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "75.05"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "18.05"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "76.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "95.00"
+				}
+			}
+		},
+		"Standard6": {
+			"description": "Model for Standard6",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "95.00"
+				}
+			}
+		},
+		"Business": {
+			"description": "Model for Business",
+			"required": ["BT_21CN_FTTC"],
+			"properties": {
+				"BT_21CN_FTTC": {
+					"$ref": "#/definitions/Bt21CnFttc3",
+					"x-example": "{\n  \"PLUS\": {\n    \"max_downspeed\": \"80.00\",\n    \"range_b_downstream_handback_threshold\": \"73.72\",\n    \"range_a_downstream_handback_threshold\": \"74.10\",\n    \"range_a_bottom_downstream\": \"75.05\",\n    \"throughput_percentage\": \"95.00\",\n    \"range_a_top_downstream\": \"76.00\",\n    \"range_a_top_upstream\": \"19.00\",\n    \"estimated_download_range\": \"75.05 - 76.00\",\n    \"range_b_bottom_downstream\": \"75.05\",\n    \"range_a_bottom_upstream\": \"18.05\",\n    \"range_b_bottom_upstream\": \"18.05\",\n    \"minimum_guaranteed_speed\": \"74.10\",\n    \"range_b_top_downstream\": \"76.00\",\n    \"max_upspeed\": \"20.00\",\n    \"range_b_top_upstream\": \"19.00\",\n    \"estimated_upload_range\": \"18.05 - 19.00\"\n  },\n  \"STANDARD\": {\n    \"range_a_top_downstream\": \"38.00\",\n    \"throughput_percentage\": \"95.00\",\n    \"estimated_download_range\": \"38.00\",\n    \"range_a_top_upstream\": \"9.50\",\n    \"max_downspeed\": \"40.00\",\n    \"range_a_bottom_downstream\": \"38.00\",\n    \"range_b_downstream_handback_threshold\": \"38.00\",\n    \"range_a_downstream_handback_threshold\": \"38.00\",\n    \"range_b_top_upstream\": \"9.50\",\n    \"max_upspeed\": \"10.00\",\n    \"range_b_top_downstream\": \"38.00\",\n    \"estimated_upload_range\": \"9.50\",\n    \"range_b_bottom_upstream\": \"9.50\",\n    \"range_a_bottom_upstream\": \"9.50\",\n    \"range_b_bottom_downstream\": \"38.00\",\n    \"minimum_guaranteed_speed\": \"38.00\"\n  }\n}"
+				},
+				"TTB_WLR_FTTC": {
+					"$ref": "#/definitions/TtbWlrFttc3",
+					"x-example": "{\n  \"STANDARD\": {\n    \"minimum_guaranteed_speed\": \"38.00\",\n    \"range_b_bottom_upstream\": \"9.50\",\n    \"range_a_bottom_upstream\": \"9.50\",\n    \"range_b_bottom_downstream\": \"38.00\",\n    \"estimated_upload_range\": \"9.50\",\n    \"range_b_top_upstream\": \"9.50\",\n    \"max_upspeed\": \"10.00\",\n    \"range_b_top_downstream\": \"38.00\",\n    \"range_a_bottom_downstream\": \"38.00\",\n    \"range_a_downstream_handback_threshold\": null,\n    \"range_b_downstream_handback_threshold\": null,\n    \"max_downspeed\": \"40.00\",\n    \"estimated_download_range\": \"38.00\",\n    \"range_a_top_upstream\": \"9.50\",\n    \"range_a_top_downstream\": \"38.00\",\n    \"throughput_percentage\": \"95.00\"\n  },\n  \"PLUS\": {\n    \"range_a_bottom_downstream\": \"75.05\",\n    \"range_a_downstream_handback_threshold\": null,\n    \"range_b_downstream_handback_threshold\": null,\n    \"max_downspeed\": \"80.00\",\n    \"estimated_download_range\": \"75.05 - 76.00\",\n    \"range_a_top_upstream\": \"19.00\",\n    \"range_a_top_downstream\": \"76.00\",\n    \"throughput_percentage\": \"95.00\",\n    \"minimum_guaranteed_speed\": \"76.00\",\n    \"range_b_bottom_upstream\": \"18.05\",\n    \"range_a_bottom_upstream\": \"18.05\",\n    \"range_b_bottom_downstream\": \"75.05\",\n    \"estimated_upload_range\": \"18.05 - 19.00\",\n    \"range_b_top_upstream\": \"19.00\",\n    \"max_upspeed\": \"20.00\",\n    \"range_b_top_downstream\": \"76.00\"\n  }\n}"
+				}
+			}
+		},
+		"Bt21CnFttc3": {
+			"description": "Model for Bt21CnFttc3",
+			"required": ["PLUS"],
+			"properties": {
+				"PLUS": {
+					"$ref": "#/definitions/Plus6",
+					"x-example": "{\n  \"max_downspeed\": \"80.00\",\n  \"range_b_downstream_handback_threshold\": \"73.72\",\n  \"range_a_downstream_handback_threshold\": \"74.10\",\n  \"range_a_bottom_downstream\": \"75.05\",\n  \"throughput_percentage\": \"95.00\",\n  \"range_a_top_downstream\": \"76.00\",\n  \"range_a_top_upstream\": \"19.00\",\n  \"estimated_download_range\": \"75.05 - 76.00\",\n  \"range_b_bottom_downstream\": \"75.05\",\n  \"range_a_bottom_upstream\": \"18.05\",\n  \"range_b_bottom_upstream\": \"18.05\",\n  \"minimum_guaranteed_speed\": \"74.10\",\n  \"range_b_top_downstream\": \"76.00\",\n  \"max_upspeed\": \"20.00\",\n  \"range_b_top_upstream\": \"19.00\",\n  \"estimated_upload_range\": \"18.05 - 19.00\"\n}"
+				},
+				"STANDARD": {
+					"$ref": "#/definitions/Standard5",
+					"x-example": "{\n  \"range_a_top_downstream\": \"38.00\",\n  \"throughput_percentage\": \"95.00\",\n  \"estimated_download_range\": \"38.00\",\n  \"range_a_top_upstream\": \"9.50\",\n  \"max_downspeed\": \"40.00\",\n  \"range_a_bottom_downstream\": \"38.00\",\n  \"range_b_downstream_handback_threshold\": \"38.00\",\n  \"range_a_downstream_handback_threshold\": \"38.00\",\n  \"range_b_top_upstream\": \"9.50\",\n  \"max_upspeed\": \"10.00\",\n  \"range_b_top_downstream\": \"38.00\",\n  \"estimated_upload_range\": \"9.50\",\n  \"range_b_bottom_upstream\": \"9.50\",\n  \"range_a_bottom_upstream\": \"9.50\",\n  \"range_b_bottom_downstream\": \"38.00\",\n  \"minimum_guaranteed_speed\": \"38.00\"\n}"
+				}
+			}
+		},
+		"Standard5": {
+			"description": "Model for Standard5",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "95.00"
+				}
+			}
+		},
+		"Plus6": {
+			"description": "Model for Plus6",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "75.05 - 76.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "18.05 - 19.00"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "80.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "20.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "74.10"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "75.05"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "18.05"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "74.10"
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "76.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "75.05"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "18.05"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "73.72"
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "76.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "95.00"
+				}
+			}
+		},
+		"Residential": {
+			"description": "Model for Residential",
+			"required": ["BT_21CN_FTTC"],
+			"properties": {
+				"BT_21CN_FTTC": {
+					"$ref": "#/definitions/Bt21CnFttc2",
+					"x-example": "{\n  \"PLUS\": {\n    \"range_b_top_downstream\": \"76.00\",\n    \"max_upspeed\": \"20.00\",\n    \"range_b_top_upstream\": \"19.00\",\n    \"estimated_upload_range\": \"18.05 - 19.00\",\n    \"range_b_bottom_downstream\": \"75.05\",\n    \"range_a_bottom_upstream\": \"18.05\",\n    \"range_b_bottom_upstream\": \"18.05\",\n    \"minimum_guaranteed_speed\": \"74.10\",\n    \"throughput_percentage\": \"95.00\",\n    \"range_a_top_downstream\": \"76.00\",\n    \"range_a_top_upstream\": \"19.00\",\n    \"estimated_download_range\": \"75.05 - 76.00\",\n    \"max_downspeed\": \"80.00\",\n    \"range_b_downstream_handback_threshold\": \"73.72\",\n    \"range_a_downstream_handback_threshold\": \"74.10\",\n    \"range_a_bottom_downstream\": \"75.05\"\n  },\n  \"STANDARD\": {\n    \"range_b_bottom_upstream\": \"9.50\",\n    \"range_a_bottom_upstream\": \"9.50\",\n    \"range_b_bottom_downstream\": \"38.00\",\n    \"minimum_guaranteed_speed\": \"38.00\",\n    \"range_b_top_upstream\": \"9.50\",\n    \"max_upspeed\": \"10.00\",\n    \"range_b_top_downstream\": \"38.00\",\n    \"estimated_upload_range\": \"9.50\",\n    \"max_downspeed\": \"40.00\",\n    \"range_a_bottom_downstream\": \"38.00\",\n    \"range_a_downstream_handback_threshold\": \"38.00\",\n    \"range_b_downstream_handback_threshold\": \"38.00\",\n    \"range_a_top_downstream\": \"38.00\",\n    \"throughput_percentage\": \"95.00\",\n    \"estimated_download_range\": \"38.00\",\n    \"range_a_top_upstream\": \"9.50\"\n  }\n}"
+				},
+				"TTB_WLR_FTTC": {
+					"$ref": "#/definitions/TtbWlrFttc2",
+					"x-example": "{\n  \"STANDARD\": {\n    \"estimated_download_range\": \"38.00\",\n    \"range_a_top_upstream\": \"9.50\",\n    \"range_a_top_downstream\": \"38.00\",\n    \"throughput_percentage\": \"95.00\",\n    \"range_b_downstream_handback_threshold\": null,\n    \"range_a_downstream_handback_threshold\": null,\n    \"range_a_bottom_downstream\": \"38.00\",\n    \"max_downspeed\": \"40.00\",\n    \"estimated_upload_range\": \"9.50\",\n    \"range_b_top_upstream\": \"9.50\",\n    \"range_b_top_downstream\": \"38.00\",\n    \"max_upspeed\": \"10.00\",\n    \"minimum_guaranteed_speed\": \"38.00\",\n    \"range_b_bottom_upstream\": \"9.50\",\n    \"range_b_bottom_downstream\": \"38.00\",\n    \"range_a_bottom_upstream\": \"9.50\"\n  },\n  \"PLUS\": {\n    \"range_a_bottom_upstream\": \"18.05\",\n    \"range_b_bottom_downstream\": \"75.05\",\n    \"range_b_bottom_upstream\": \"18.05\",\n    \"minimum_guaranteed_speed\": \"76.00\",\n    \"max_upspeed\": \"20.00\",\n    \"range_b_top_downstream\": \"76.00\",\n    \"range_b_top_upstream\": \"19.00\",\n    \"estimated_upload_range\": \"18.05 - 19.00\",\n    \"max_downspeed\": \"80.00\",\n    \"range_a_bottom_downstream\": \"75.05\",\n    \"range_a_downstream_handback_threshold\": null,\n    \"range_b_downstream_handback_threshold\": null,\n    \"throughput_percentage\": \"95.00\",\n    \"range_a_top_downstream\": \"76.00\",\n    \"range_a_top_upstream\": \"19.00\",\n    \"estimated_download_range\": \"75.05 - 76.00\"\n  }\n}"
+				}
+			}
+		},
+		"TtbWlrFttc2": {
+			"description": "Model for TtbWlrFttc2",
+			"required": ["PLUS"],
+			"properties": {
+				"PLUS": {
+					"$ref": "#/definitions/Plus5",
+					"x-example": "{\n  \"range_a_bottom_upstream\": \"18.05\",\n  \"range_b_bottom_downstream\": \"75.05\",\n  \"range_b_bottom_upstream\": \"18.05\",\n  \"minimum_guaranteed_speed\": \"76.00\",\n  \"max_upspeed\": \"20.00\",\n  \"range_b_top_downstream\": \"76.00\",\n  \"range_b_top_upstream\": \"19.00\",\n  \"estimated_upload_range\": \"18.05 - 19.00\",\n  \"max_downspeed\": \"80.00\",\n  \"range_a_bottom_downstream\": \"75.05\",\n  \"range_a_downstream_handback_threshold\": null,\n  \"range_b_downstream_handback_threshold\": null,\n  \"throughput_percentage\": \"95.00\",\n  \"range_a_top_downstream\": \"76.00\",\n  \"range_a_top_upstream\": \"19.00\",\n  \"estimated_download_range\": \"75.05 - 76.00\"\n}"
+				},
+				"STANDARD": {
+					"$ref": "#/definitions/Standard4",
+					"x-example": "{\n  \"estimated_download_range\": \"38.00\",\n  \"range_a_top_upstream\": \"9.50\",\n  \"range_a_top_downstream\": \"38.00\",\n  \"throughput_percentage\": \"95.00\",\n  \"range_b_downstream_handback_threshold\": null,\n  \"range_a_downstream_handback_threshold\": null,\n  \"range_a_bottom_downstream\": \"38.00\",\n  \"max_downspeed\": \"40.00\",\n  \"estimated_upload_range\": \"9.50\",\n  \"range_b_top_upstream\": \"9.50\",\n  \"range_b_top_downstream\": \"38.00\",\n  \"max_upspeed\": \"10.00\",\n  \"minimum_guaranteed_speed\": \"38.00\",\n  \"range_b_bottom_upstream\": \"9.50\",\n  \"range_b_bottom_downstream\": \"38.00\",\n  \"range_a_bottom_upstream\": \"9.50\"\n}"
+				}
+			}
+		},
+		"Plus5": {
+			"description": "Model for Plus5",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "75.05 - 76.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "18.05 - 19.00"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "80.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "20.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "76.00"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "75.05"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "18.05"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "76.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "75.05"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "18.05"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "76.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "95.00"
+				}
+			}
+		},
+		"Standard4": {
+			"description": "Model for Standard4",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "95.00"
+				}
+			}
+		},
+		"Bt21CnFttc2": {
+			"description": "Model for Bt21CnFttc2",
+			"required": ["PLUS"],
+			"properties": {
+				"PLUS": {
+					"$ref": "#/definitions/Plus4",
+					"x-example": "{\n  \"range_b_top_downstream\": \"76.00\",\n  \"max_upspeed\": \"20.00\",\n  \"range_b_top_upstream\": \"19.00\",\n  \"estimated_upload_range\": \"18.05 - 19.00\",\n  \"range_b_bottom_downstream\": \"75.05\",\n  \"range_a_bottom_upstream\": \"18.05\",\n  \"range_b_bottom_upstream\": \"18.05\",\n  \"minimum_guaranteed_speed\": \"74.10\",\n  \"throughput_percentage\": \"95.00\",\n  \"range_a_top_downstream\": \"76.00\",\n  \"range_a_top_upstream\": \"19.00\",\n  \"estimated_download_range\": \"75.05 - 76.00\",\n  \"max_downspeed\": \"80.00\",\n  \"range_b_downstream_handback_threshold\": \"73.72\",\n  \"range_a_downstream_handback_threshold\": \"74.10\",\n  \"range_a_bottom_downstream\": \"75.05\"\n}"
+				},
+				"STANDARD": {
+					"$ref": "#/definitions/Standard3",
+					"x-example": "{\n  \"range_b_bottom_upstream\": \"9.50\",\n  \"range_a_bottom_upstream\": \"9.50\",\n  \"range_b_bottom_downstream\": \"38.00\",\n  \"minimum_guaranteed_speed\": \"38.00\",\n  \"range_b_top_upstream\": \"9.50\",\n  \"max_upspeed\": \"10.00\",\n  \"range_b_top_downstream\": \"38.00\",\n  \"estimated_upload_range\": \"9.50\",\n  \"max_downspeed\": \"40.00\",\n  \"range_a_bottom_downstream\": \"38.00\",\n  \"range_a_downstream_handback_threshold\": \"38.00\",\n  \"range_b_downstream_handback_threshold\": \"38.00\",\n  \"range_a_top_downstream\": \"38.00\",\n  \"throughput_percentage\": \"95.00\",\n  \"estimated_download_range\": \"38.00\",\n  \"range_a_top_upstream\": \"9.50\"\n}"
+				}
+			}
+		},
+		"Standard3": {
+			"description": "Model for Standard3",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "38.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "9.50"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "95.00"
+				}
+			}
+		},
+		"Plus4": {
+			"description": "Model for Plus4",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "75.05 - 76.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "18.05 - 19.00"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "80.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "20.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "74.10"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "75.05"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "18.05"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "74.10"
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "76.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "75.05"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "18.05"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "73.72"
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "76.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "95.00"
+				}
+			}
+		},
+		"None": {
+			"description": "Model for None",
+			"required": ["BT_21CN_FTTC"],
+			"properties": {
+				"BT_21CN_FTTC": {
+					"$ref": "#/definitions/Bt21CnFttc",
+					"x-example": "{\n  \"PLUS\": {\n    \"max_downspeed\": \"80.00\",\n    \"range_b_downstream_handback_threshold\": \"77.60\",\n    \"range_a_downstream_handback_threshold\": \"78.00\",\n    \"range_a_bottom_downstream\": \"79.00\",\n    \"range_a_top_downstream\": \"80.00\",\n    \"throughput_percentage\": \"100.00\",\n    \"estimated_download_range\": \"79.00 - 80.00\",\n    \"range_a_top_upstream\": \"20.00\",\n    \"range_b_bottom_upstream\": \"19.00\",\n    \"range_b_bottom_downstream\": \"79.00\",\n    \"range_a_bottom_upstream\": \"19.00\",\n    \"minimum_guaranteed_speed\": \"78.00\",\n    \"range_b_top_upstream\": \"20.00\",\n    \"range_b_top_downstream\": \"80.00\",\n    \"max_upspeed\": \"20.00\",\n    \"estimated_upload_range\": \"19.00 - 20.00\"\n  },\n  \"STANDARD\": {\n    \"estimated_download_range\": \"40.00\",\n    \"range_a_top_upstream\": \"10.00\",\n    \"range_a_top_downstream\": \"40.00\",\n    \"throughput_percentage\": \"100.00\",\n    \"range_a_downstream_handback_threshold\": \"40.00\",\n    \"range_b_downstream_handback_threshold\": \"40.00\",\n    \"range_a_bottom_downstream\": \"40.00\",\n    \"max_downspeed\": \"40.00\",\n    \"estimated_upload_range\": \"10.00\",\n    \"range_b_top_upstream\": \"10.00\",\n    \"range_b_top_downstream\": \"40.00\",\n    \"max_upspeed\": \"10.00\",\n    \"minimum_guaranteed_speed\": \"40.00\",\n    \"range_b_bottom_upstream\": \"10.00\",\n    \"range_b_bottom_downstream\": \"40.00\",\n    \"range_a_bottom_upstream\": \"10.00\"\n  }\n}"
+				},
+				"TTB_WLR_FTTC": {
+					"$ref": "#/definitions/TtbWlrFttc",
+					"x-example": "{\n  \"PLUS\": {\n    \"range_a_top_upstream\": \"20.00\",\n    \"estimated_download_range\": \"79.00 - 80.00\",\n    \"throughput_percentage\": \"100.00\",\n    \"range_a_top_downstream\": \"80.00\",\n    \"range_a_bottom_downstream\": \"79.00\",\n    \"range_b_downstream_handback_threshold\": null,\n    \"range_a_downstream_handback_threshold\": null,\n    \"max_downspeed\": \"80.00\",\n    \"estimated_upload_range\": \"19.00 - 20.00\",\n    \"max_upspeed\": \"20.00\",\n    \"range_b_top_downstream\": \"80.00\",\n    \"range_b_top_upstream\": \"20.00\",\n    \"minimum_guaranteed_speed\": \"80.00\",\n    \"range_a_bottom_upstream\": \"19.00\",\n    \"range_b_bottom_downstream\": \"79.00\",\n    \"range_b_bottom_upstream\": \"19.00\"\n  },\n  \"STANDARD\": {\n    \"range_b_bottom_upstream\": \"10.00\",\n    \"range_b_bottom_downstream\": \"40.00\",\n    \"range_a_bottom_upstream\": \"10.00\",\n    \"minimum_guaranteed_speed\": \"40.00\",\n    \"range_b_top_upstream\": \"10.00\",\n    \"range_b_top_downstream\": \"40.00\",\n    \"max_upspeed\": \"10.00\",\n    \"estimated_upload_range\": \"10.00\",\n    \"max_downspeed\": \"40.00\",\n    \"range_b_downstream_handback_threshold\": null,\n    \"range_a_downstream_handback_threshold\": null,\n    \"range_a_bottom_downstream\": \"40.00\",\n    \"range_a_top_downstream\": \"40.00\",\n    \"throughput_percentage\": \"100.00\",\n    \"estimated_download_range\": \"40.00\",\n    \"range_a_top_upstream\": \"10.00\"\n  }\n}"
+				}
+			}
+		},
+		"Bt21CnFttc": {
+			"description": "Model for Bt21CnFttc",
+			"required": ["PLUS"],
+			"properties": {
+				"PLUS": {
+					"$ref": "#/definitions/Plus3",
+					"x-example": "{\n  \"max_downspeed\": \"80.00\",\n  \"range_b_downstream_handback_threshold\": \"77.60\",\n  \"range_a_downstream_handback_threshold\": \"78.00\",\n  \"range_a_bottom_downstream\": \"79.00\",\n  \"range_a_top_downstream\": \"80.00\",\n  \"throughput_percentage\": \"100.00\",\n  \"estimated_download_range\": \"79.00 - 80.00\",\n  \"range_a_top_upstream\": \"20.00\",\n  \"range_b_bottom_upstream\": \"19.00\",\n  \"range_b_bottom_downstream\": \"79.00\",\n  \"range_a_bottom_upstream\": \"19.00\",\n  \"minimum_guaranteed_speed\": \"78.00\",\n  \"range_b_top_upstream\": \"20.00\",\n  \"range_b_top_downstream\": \"80.00\",\n  \"max_upspeed\": \"20.00\",\n  \"estimated_upload_range\": \"19.00 - 20.00\"\n}"
+				},
+				"STANDARD": {
+					"$ref": "#/definitions/Standard2",
+					"x-example": "{\n  \"estimated_download_range\": \"40.00\",\n  \"range_a_top_upstream\": \"10.00\",\n  \"range_a_top_downstream\": \"40.00\",\n  \"throughput_percentage\": \"100.00\",\n  \"range_a_downstream_handback_threshold\": \"40.00\",\n  \"range_b_downstream_handback_threshold\": \"40.00\",\n  \"range_a_bottom_downstream\": \"40.00\",\n  \"max_downspeed\": \"40.00\",\n  \"estimated_upload_range\": \"10.00\",\n  \"range_b_top_upstream\": \"10.00\",\n  \"range_b_top_downstream\": \"40.00\",\n  \"max_upspeed\": \"10.00\",\n  \"minimum_guaranteed_speed\": \"40.00\",\n  \"range_b_bottom_upstream\": \"10.00\",\n  \"range_b_bottom_downstream\": \"40.00\",\n  \"range_a_bottom_upstream\": \"10.00\"\n}"
+				}
+			}
+		},
+		"Standard2": {
+			"description": "Model for Standard2",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "100.00"
+				}
+			}
+		},
+		"Plus3": {
+			"description": "Model for Plus3",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "79.00 - 80.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "19.00 - 20.00"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "80.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "20.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "78.00"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "79.00"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "78.00"
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "80.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "20.00"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "79.00"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "77.60"
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "80.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "20.00"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "100.00"
+				}
+			}
+		},
+		"TtbWlrFttc": {
+			"description": "Model for TtbWlrFttc",
+			"required": ["PLUS"],
+			"properties": {
+				"PLUS": {
+					"$ref": "#/definitions/Plus2",
+					"x-example": "{\n  \"range_a_top_upstream\": \"20.00\",\n  \"estimated_download_range\": \"79.00 - 80.00\",\n  \"throughput_percentage\": \"100.00\",\n  \"range_a_top_downstream\": \"80.00\",\n  \"range_a_bottom_downstream\": \"79.00\",\n  \"range_b_downstream_handback_threshold\": null,\n  \"range_a_downstream_handback_threshold\": null,\n  \"max_downspeed\": \"80.00\",\n  \"estimated_upload_range\": \"19.00 - 20.00\",\n  \"max_upspeed\": \"20.00\",\n  \"range_b_top_downstream\": \"80.00\",\n  \"range_b_top_upstream\": \"20.00\",\n  \"minimum_guaranteed_speed\": \"80.00\",\n  \"range_a_bottom_upstream\": \"19.00\",\n  \"range_b_bottom_downstream\": \"79.00\",\n  \"range_b_bottom_upstream\": \"19.00\"\n}"
+				},
+				"STANDARD": {
+					"$ref": "#/definitions/Standard",
+					"x-example": "{\n  \"range_b_bottom_upstream\": \"10.00\",\n  \"range_b_bottom_downstream\": \"40.00\",\n  \"range_a_bottom_upstream\": \"10.00\",\n  \"minimum_guaranteed_speed\": \"40.00\",\n  \"range_b_top_upstream\": \"10.00\",\n  \"range_b_top_downstream\": \"40.00\",\n  \"max_upspeed\": \"10.00\",\n  \"estimated_upload_range\": \"10.00\",\n  \"max_downspeed\": \"40.00\",\n  \"range_b_downstream_handback_threshold\": null,\n  \"range_a_downstream_handback_threshold\": null,\n  \"range_a_bottom_downstream\": \"40.00\",\n  \"range_a_top_downstream\": \"40.00\",\n  \"throughput_percentage\": \"100.00\",\n  \"estimated_download_range\": \"40.00\",\n  \"range_a_top_upstream\": \"10.00\"\n}"
+				}
+			}
+		},
+		"Standard": {
+			"description": "Model for Standard",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "40.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "10.00"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "100.00"
+				}
+			}
+		},
+		"Plus2": {
+			"description": "Model for Plus2",
+			"required": ["estimated_download_range"],
+			"properties": {
+				"estimated_download_range": {
+					"type": "string",
+					"x-example": "79.00 - 80.00"
+				},
+				"estimated_upload_range": {
+					"type": "string",
+					"x-example": "19.00 - 20.00"
+				},
+				"max_downspeed": {
+					"type": "string",
+					"x-example": "80.00"
+				},
+				"max_upspeed": {
+					"type": "string",
+					"x-example": "20.00"
+				},
+				"minimum_guaranteed_speed": {
+					"type": "string",
+					"x-example": "80.00"
+				},
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "79.00"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "80.00"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "20.00"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "79.00"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "19.00"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "80.00"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "20.00"
+				},
+				"throughput_percentage": {
+					"type": "string",
+					"x-example": "100.00"
+				}
+			}
+		},
+		"TagsResponseDetails": {
+			"description": "Model for TagsResponseDetails",
+			"required": ["error_code"],
+			"properties": {
+				"error_code": {
+					"type": "string",
+					"x-example": "0"
+				},
+				"postcode": {
+					"type": "string",
+					"x-example": "HS4 3XU"
+				},
+				"tags_values": {
+					"$ref": "#/definitions/TagsValues",
+					"x-example": "{\n  \"fttc_gfast\": {\n    \"range_b_top_upstream\": \"\",\n    \"range_a_top_downstream\": \"\",\n    \"rate_adaptive\": \"\",\n    \"range_b_top_downstream\": \"\",\n    \"range_a_top_upstream\": \"\",\n    \"range_b_bottom_upstream\": \"\",\n    \"range_a_bottom_upstream\": \"\",\n    \"range_b_bottom_downstream\": \"\",\n    \"range_a_bottom_downstream\": \"\",\n    \"range_a_downstream_handback_threshold\": \"\",\n    \"range_b_downstream_handback_threshold\": \"\"\n  },\n  \"plus\": {\n    \"rate_adaptive\": \"\",\n    \"min_range\": \"\",\n    \"max_speed\": \"\",\n    \"max_range\": \"\",\n    \"annexm\": {\n      \"rate_adaptive\": \"\",\n      \"min_range\": \"\",\n      \"max_speed_down\": \"\",\n      \"max_speed_up\": \"\",\n      \"max_range\": \"\"\n    }\n  },\n  \"fttc\": {\n    \"range_a_bottom_downstream\": \"79000\",\n    \"range_b_downstream_handback_threshold\": \"77600\",\n    \"range_a_downstream_handback_threshold\": \"78000\",\n    \"range_a_bottom_upstream\": \"19000\",\n    \"range_b_bottom_downstream\": \"79000\",\n    \"range_b_bottom_upstream\": \"19000\",\n    \"range_a_top_upstream\": \"20000\",\n    \"rate_adaptive\": \"G\",\n    \"range_b_top_downstream\": \"80000\",\n    \"range_b_top_upstream\": \"20000\",\n    \"range_a_top_downstream\": \"80000\"\n  },\n  \"max\": {\n    \"max_speed\": \"\",\n    \"max_range\": \"\",\n    \"min_range\": \"\",\n    \"rate_adaptive\": \"\"\n  },\n  \"classic\": {\n    \"reason_code\": \"Z\",\n    \"rate_adaptive\": \"G\",\n    \"max_speed\": \"\",\n    \"fixed_rate\": \"G\"\n  }\n}"
+				}
+			}
+		},
+		"Classic": {
+			"description": "Model for Classic",
+			"required": ["fixed_rate"],
+			"properties": {
+				"fixed_rate": {
+					"type": "string",
+					"x-example": "G"
+				},
+				"max_speed": {
+					"type": "string",
+					"x-example": ""
+				},
+				"rate_adaptive": {
+					"type": "string",
+					"x-example": "G"
+				},
+				"reason_code": {
+					"type": "string",
+					"x-example": "Z"
+				}
+			}
+		},
+		"TagsValues": {
+			"description": "Model for TagsValues",
+			"required": ["classic"],
+			"properties": {
+				"classic": {
+					"$ref": "#/definitions/Classic",
+					"x-example": "{\n  \"reason_code\": \"Z\",\n  \"rate_adaptive\": \"G\",\n  \"max_speed\": \"\",\n  \"fixed_rate\": \"G\"\n}"
+				},
+				"fttc": {
+					"$ref": "#/definitions/Fttc",
+					"x-example": "{\n  \"range_a_bottom_downstream\": \"79000\",\n  \"range_b_downstream_handback_threshold\": \"77600\",\n  \"range_a_downstream_handback_threshold\": \"78000\",\n  \"range_a_bottom_upstream\": \"19000\",\n  \"range_b_bottom_downstream\": \"79000\",\n  \"range_b_bottom_upstream\": \"19000\",\n  \"range_a_top_upstream\": \"20000\",\n  \"rate_adaptive\": \"G\",\n  \"range_b_top_downstream\": \"80000\",\n  \"range_b_top_upstream\": \"20000\",\n  \"range_a_top_downstream\": \"80000\"\n}"
+				},
+				"fttc_gfast": {
+					"$ref": "#/definitions/FttcGfast",
+					"x-example": "{\n  \"range_b_top_upstream\": \"\",\n  \"range_a_top_downstream\": \"\",\n  \"rate_adaptive\": \"\",\n  \"range_b_top_downstream\": \"\",\n  \"range_a_top_upstream\": \"\",\n  \"range_b_bottom_upstream\": \"\",\n  \"range_a_bottom_upstream\": \"\",\n  \"range_b_bottom_downstream\": \"\",\n  \"range_a_bottom_downstream\": \"\",\n  \"range_a_downstream_handback_threshold\": \"\",\n  \"range_b_downstream_handback_threshold\": \"\"\n}"
+				},
+				"max": {
+					"$ref": "#/definitions/Max",
+					"x-example": "{\n  \"max_speed\": \"\",\n  \"max_range\": \"\",\n  \"min_range\": \"\",\n  \"rate_adaptive\": \"\"\n}"
+				},
+				"plus": {
+					"$ref": "#/definitions/Plus",
+					"x-example": "{\n  \"rate_adaptive\": \"\",\n  \"min_range\": \"\",\n  \"max_speed\": \"\",\n  \"max_range\": \"\",\n  \"annexm\": {\n    \"rate_adaptive\": \"\",\n    \"min_range\": \"\",\n    \"max_speed_down\": \"\",\n    \"max_speed_up\": \"\",\n    \"max_range\": \"\"\n  }\n}"
+				}
+			}
+		},
+		"Max": {
+			"description": "Model for Max",
+			"required": ["max_range"],
+			"properties": {
+				"max_range": {
+					"type": "string",
+					"x-example": ""
+				},
+				"max_speed": {
+					"type": "string",
+					"x-example": ""
+				},
+				"min_range": {
+					"type": "string",
+					"x-example": ""
+				},
+				"rate_adaptive": {
+					"type": "string",
+					"x-example": ""
+				}
+			}
+		},
+		"Fttc": {
+			"description": "Model for Fttc",
+			"required": ["range_a_bottom_downstream"],
+			"properties": {
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": "79000"
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": "19000"
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "78000"
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": "80000"
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": "20000"
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": "79000"
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": "19000"
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": "77600"
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": "80000"
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": "20000"
+				},
+				"rate_adaptive": {
+					"type": "string",
+					"x-example": "G"
+				}
+			}
+		},
+		"Annexm": {
+			"description": "Model for Annexm",
+			"required": ["max_range"],
+			"properties": {
+				"max_range": {
+					"type": "string",
+					"x-example": ""
+				},
+				"max_speed_down": {
+					"type": "string",
+					"x-example": ""
+				},
+				"max_speed_up": {
+					"type": "string",
+					"x-example": ""
+				},
+				"min_range": {
+					"type": "string",
+					"x-example": ""
+				},
+				"rate_adaptive": {
+					"type": "string",
+					"x-example": ""
+				}
+			}
+		},
+		"Plus": {
+			"description": "Model for Plus",
+			"required": ["annexm"],
+			"properties": {
+				"annexm": {
+					"$ref": "#/definitions/Annexm",
+					"x-example": "{\n  \"rate_adaptive\": \"\",\n  \"min_range\": \"\",\n  \"max_speed_down\": \"\",\n  \"max_speed_up\": \"\",\n  \"max_range\": \"\"\n}"
+				},
+				"max_range": {
+					"type": "string",
+					"x-example": ""
+				},
+				"max_speed": {
+					"type": "string",
+					"x-example": ""
+				},
+				"min_range": {
+					"type": "string",
+					"x-example": ""
+				},
+				"rate_adaptive": {
+					"type": "string",
+					"x-example": ""
+				}
+			}
+		},
+		"FttcGfast": {
+			"description": "Model for FttcGfast",
+			"required": ["range_a_bottom_downstream"],
+			"properties": {
+				"range_a_bottom_downstream": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_a_bottom_upstream": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_a_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_a_top_downstream": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_a_top_upstream": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_b_bottom_downstream": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_b_bottom_upstream": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_b_downstream_handback_threshold": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_b_top_downstream": {
+					"type": "string",
+					"x-example": ""
+				},
+				"range_b_top_upstream": {
+					"type": "string",
+					"x-example": ""
+				},
+				"rate_adaptive": {
+					"type": "string",
+					"x-example": ""
+				}
+			}
+		},
+		"MpfResponseDetails": {
+			"description": "Model for MpfResponseDetails",
+			"required": ["error_message"],
+			"properties": {
+				"error_message": {
+					"type": "string",
+					"x-example": ""
+				},
+				"mpf_available": {
+					"type": "integer",
+					"format": "int32",
+					"x-example": "0"
+				}
+			}
+		},
 		"InstallationDetails": {
 			"description": "Model for InstallationDetails",
 			"required": ["aux_line_quantity"],
@@ -384,6 +2239,9 @@
 	"tags": [{
 		"name": "Account",
 		"description": "Operations about Account"
+	}, {
+		"name": "Product",
+		"description": "Operations about Product"
 	}, {
 		"name": "WLR3",
 		"description": "Operations about WLR3"
