@@ -3,12 +3,65 @@
 	"info": {
 		"title": "Daisy Central",
 		"description": "API for daisycentral.local",
-		"version": "0.0.0"
+		"version": "1.0.0"
 	},
-	"host": "daisycentral.local",
+	"host": "10.4.11.173",
 	"basePath": "/cgi-bin/index.cgi/ExternalServices/v1",
 	"schemes": ["http"],
 	"paths": {
+		"/Account/AddNote": {
+			"post": {
+				"tags": ["Account"],
+				"summary": "Add note to account",
+				"description": "Add note to account",
+				"operationId": "add_note_to_account",
+				"consumes": ["application/x-www-form-urlencoded"],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "name",
+					"in": "formData",
+					"description": "The note name",
+					"required": true,
+					"enum": ["Customer Calling", "Chasing Outstanding Issue", "Internal Update", "External Update", "Other"],
+					"type": "string",
+					"x-example": "Internal Update"
+				}, {
+					"name": "account",
+					"in": "formData",
+					"description": "The account the note is to be created on",
+					"required": true,
+					"type": "string",
+					"x-example": "QIK32606"
+				}, {
+					"name": "description",
+					"in": "formData",
+					"description": "The note body/description",
+					"required": true,
+					"type": "string",
+					"x-example": "A sample description"
+				}],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/Note"
+						},
+						"examples": {
+							"application/json": {
+								"status": "success",
+								"data": {
+									"success": 1,
+									"message": "Note Internal Update Has been created on account: QIK32606"
+								}
+							}
+						}
+					}
+				},
+				"security": [{
+					"Basic Auth": []
+				}]
+			}
+		},
 		"/Opportunity/Create": {
 			"post": {
 				"tags": ["Opportunity"],
@@ -78,6 +131,20 @@
 		}
 	},
 	"definitions": {
+		"Note": {
+			"description": "Model for Note",
+			"required": ["data"],
+			"properties": {
+				"data": {
+					"$ref": "#/definitions/Data",
+					"x-example": "{\n  \"success\": 1,\n  \"message\": \"Note Internal Update Has been created on account: QIK32606\"\n}"
+				},
+				"status": {
+					"type": "string",
+					"x-example": "success"
+				}
+			}
+		},
 		"Data": {
 			"description": "Model for Data",
 			"required": ["message"],
@@ -116,6 +183,9 @@
 	},
 	"security": [],
 	"tags": [{
+		"name": "Account",
+		"description": "Operations about Account"
+	}, {
 		"name": "Opportunity",
 		"description": "Operations about Opportunity"
 	}]
