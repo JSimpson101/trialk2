@@ -5,7 +5,7 @@
 		"description": "API for daisycentral.local",
 		"version": "1.0.0"
 	},
-	"host": "10.4.11.173",
+	"host": "localhost:17000",
 	"basePath": "/cgi-bin/index.cgi/ExternalServices/v1",
 	"schemes": ["http"],
 	"paths": {
