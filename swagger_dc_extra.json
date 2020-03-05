@@ -3,7 +3,7 @@
 	"info": {
 		"title": "Daisy Central",
 		"description": "API for daisycentral.local",
-		"version": "1.0.0"
+		"version": "0.0.0"
 	},
 	"host": "localhost:17000",
 	"basePath": "/cgi-bin/index.cgi/ExternalServices/v1",
@@ -80,7 +80,7 @@
 					"name": "account",
 					"in": "formData",
 					"description": "The account the opportunity is for",
-					"required": true,
+					"required": false,
 					"type": "string",
 					"x-example": "QIK32606"
 				}, {
@@ -106,6 +106,14 @@
 					"default": "Self Generated",
 					"type": "string",
 					"x-example": "Self Generated"
+				}, {
+					"name": "user_name",
+					"in": "formData",
+					"description": "The DC username of the person this is to be assigned to",
+					"required": false,
+					"default": "robot",
+					"type": "string",
+					"x-example": "luke.shaw"
 				}],
 				"responses": {
 					"200": {
